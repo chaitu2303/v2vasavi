@@ -3,245 +3,253 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2 Vasavi Electricals | Pro Max</title>
+    <title>V2 Vasavi Electricals | Professional Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-glow: #ffcc00;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --electric-yellow: #ffdb15;
+            --neon-glow: 0 0 15px #ffdb15;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
-        body {
-            background: radial-gradient(circle at center, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: white;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        body { background: #050505; color: white; overflow-x: hidden; }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* --- Loading Animation (Light Switch) --- */
+        /* --- 💡 Bulb Loading Animation --- */
         #loader {
-            position: fixed;
-            width: 100%; height: 100vh;
-            background: #000;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            z-index: 9999;
-            transition: opacity 1s ease;
+            position: fixed; width: 100%; height: 100vh; background: #000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 9999; transition: opacity 0.8s ease;
         }
-        .bulb-icon {
-            font-size: 80px;
-            color: #333;
-            transition: 0.5s;
-        }
-        .bulb-on {
-            color: var(--primary-glow);
-            text-shadow: 0 0 50px var(--primary-glow);
+        .loading-bulb { font-size: 60px; color: #333; animation: bulbBlink 0.8s infinite; }
+        @keyframes bulbBlink {
+            0%, 100% { color: #222; text-shadow: none; }
+            50% { color: var(--electric-yellow); text-shadow: var(--neon-glow); }
         }
 
-        /* --- Glassmorphism UI --- */
-        .glass-nav {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 15px 5%;
-            display: flex; justify-content: space-between; align-items: center;
-            position: sticky; top: 0; z-index: 100;
+        /* --- Header & Navigation --- */
+        header {
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--glass-border);
         }
+        .brand { display: flex; align-items: center; gap: 15px; }
+        .logo-img { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; }
+        .brand-name { font-size: 22px; font-weight: 800; color: var(--electric-yellow); letter-spacing: 1px; }
 
-        .logo-img { width: 80px; filter: drop-shadow(0 0 10px white); }
+        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav a { text-decoration: none; color: #ccc; font-weight: 500; transition: 0.3s; font-size: 15px; }
+        nav a:hover { color: var(--electric-yellow); }
 
-        .search-box {
-            background: rgba(255,255,255,0.2);
-            border: none; padding: 10px 20px;
-            border-radius: 25px; color: white; width: 300px;
-            outline: none; border: 1px solid var(--glass-border);
-        }
+        .cart-trigger { position: relative; cursor: pointer; color: var(--electric-yellow); font-size: 20px; }
+        .badge { position: absolute; top: -10px; right: -12px; background: red; color: white; font-size: 10px; padding: 2px 6px; border-radius: 50%; }
 
-        .hero {
-            text-align: center; padding: 100px 20px;
-        }
-
-        .hero h1 { font-size: 3.5rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 10px; }
+        /* --- Hero --- */
+        .hero { padding: 100px 5%; text-align: center; background: radial-gradient(circle at top, #111, #000); }
+        .hero h1 { font-size: 3rem; margin-bottom: 15px; text-transform: uppercase; }
+        .hero p { color: #888; font-size: 1.1rem; }
 
         /* --- Product Grid --- */
-        .container { padding: 50px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-
+        .container { padding: 40px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .product-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 20px;
-            text-align: center;
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            background: var(--glass-bg); border: 1px solid var(--glass-border);
+            border-radius: 15px; padding: 20px; text-align: center; transition: 0.4s;
+        }
+        .product-card:hover { transform: translateY(-8px); border-color: var(--electric-yellow); box-shadow: 0 0 20px rgba(255,219,21,0.1); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; }
+        .product-card h3 { font-size: 18px; margin-bottom: 8px; }
+        .price { color: var(--electric-yellow); font-weight: bold; margin-bottom: 15px; display: block; }
+        
+        .add-btn {
+            width: 100%; padding: 12px; background: var(--electric-yellow); border: none;
+            border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .add-btn:hover { background: #fff; box-shadow: var(--neon-glow); }
+
+        /* --- Contact Section --- */
+        .contact-section { padding: 80px 5%; background: #080808; border-top: 1px solid var(--glass-border); }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        .contact-info h2 { color: var(--electric-yellow); margin-bottom: 20px; }
+        .info-item { display: flex; gap: 15px; margin-bottom: 20px; align-items: flex-start; }
+        .info-item i { color: var(--electric-yellow); font-size: 20px; }
+
+        /* --- Sliding Cart --- */
+        .cart-panel {
+            position: fixed; top: 0; right: -400px; width: 350px; height: 100%;
+            background: #111; z-index: 2000; transition: 0.5s; padding: 30px;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.8); border-left: 1px solid var(--glass-border);
+        }
+        .cart-panel.active { right: 0; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; background: #1a1a1a; padding: 10px; border-radius: 8px; border: 1px solid #333; }
+
+        .order-now {
+            width: 100%; padding: 15px; background: #25d366; color: white; border: none;
+            border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 20px;
         }
 
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.3);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .product-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 15px; }
-
-        .price-tag { color: var(--primary-glow); font-size: 1.5rem; font-weight: bold; margin: 10px 0; }
-
-        .btn-order {
-            background: var(--primary-glow);
-            color: black; border: none;
-            padding: 12px 25px; border-radius: 25px;
-            font-weight: bold; cursor: pointer;
-            width: 100%; transition: 0.3s;
-        }
-
-        .btn-order:hover { background: white; transform: scale(1.05); }
-
-        /* --- Floating WhatsApp --- */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; color: white;
-            width: 60px; height: 60px;
-            border-radius: 50%; display: flex;
-            justify-content: center; align-items: center;
-            font-size: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            z-index: 1000; text-decoration: none;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        /* --- Map Section --- */
-        .map-container { margin: 50px 5%; border-radius: 20px; overflow: hidden; border: 2px solid var(--glass-border); }
-
-        footer { text-align: center; padding: 40px; background: rgba(0,0,0,0.5); margin-top: 50px; }
+        footer { text-align: center; padding: 40px; color: #555; font-size: 14px; border-top: 1px solid #111; }
 
     </style>
 </head>
-<body onload="startApp()">
+<body onload="hideLoader()">
 
     <div id="loader">
-        <i id="bulb" class="fas fa-lightbulb bulb-icon"></i>
-        <p id="load-text" style="margin-top: 20px; letter-spacing: 2px;">V2 VASAVI POWERING UP...</p>
+        <i class="fas fa-lightbulb loading-bulb"></i>
+        <p style="margin-top:20px; color: #666; letter-spacing: 3px;">POWERING V2 VASAVI...</p>
     </div>
 
-    <nav class="glass-nav">
-        <img src="logo.jpg" class="logo-img" alt="V2 Vasavi Logo">
-        <input type="text" class="search-box" placeholder="Search for bulbs, pipes, wires..." onkeyup="filterProducts()">
-        <div style="font-size: 20px; cursor: pointer;">
-            <i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span>
+    <header>
+        <div class="brand">
+            <img src="logo.jpg" class="logo-img" alt="V2 Vasavi Logo">
+            <span class="brand-name">V2 VASAVI</span>
         </div>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="cart-trigger" onclick="toggleCart(true)">
+            <i class="fas fa-shopping-basket"></i>
+            <span class="badge" id="cartCount">0</span>
+        </div>
+    </header>
 
     <section class="hero">
-        <h1 id="main-title">V2 Vasavi Electricals</h1>
-        <p>Visakhapatnam's No.1 Wholesale & Retail Hub</p>
+        <h1>High Quality Electricals</h1>
+        <p>Your Trusted Partner for Wholesale & Retail Electrical Solutions in Vizag.</p>
     </section>
 
-    <div class="container" id="product-list">
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0" alt="LED Bulb">
-            <h3>Premium LED Bulb</h3>
-            <p>Save 80% Energy</p>
-            <div class="price-tag">₹ Wholesale Price</div>
-            <button class="btn-order" onclick="addToCart('LED Bulb')">Add to Cart</button>
+    <section id="products">
+        <h2 style="text-align:center; color:var(--electric-yellow); margin-top:50px;">Our Essentials</h2>
+        <div class="container">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=600" alt="LED">
+                <h3>9W LED Bulbs (Bulk)</h3>
+                <span class="price">Wholesale Rate</span>
+                <button class="add-btn" onclick="addToCart('9W LED Bulb Pack', 'Wholesale')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511211024345-36423d242c70?q=80&w=600" alt="Serial Lights">
+                <h3>Festival Serial Sets</h3>
+                <span class="price">Fancy Collection</span>
+                <button class="add-btn" onclick="addToCart('Serial Set (10m)', 'Best Price')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1533055640609-24b498dfd74c?q=80&w=600" alt="Street Light">
+                <h3>Outdoor Street Lights</h3>
+                <span class="price">Heavy Duty</span>
+                <button class="add-btn" onclick="addToCart('Street Light 50W', 'Premium')">Add to Cart</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1621905285851-e39ad1419f01?q=80&w=600" alt="Pipes">
+                <h3>Electrical PVC Pipes</h3>
+                <span class="price">Bundle Rates</span>
+                <button class="add-btn" onclick="addToCart('PVC Pipe Bundle', 'Bulk')">Add to Cart</button>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1605032653327-8f7c2e6c6f0d" alt="Serial Lights">
-            <h3>Festival Serial Sets</h3>
-            <p>10m - 50m Available</p>
-            <div class="price-tag">₹ Best Deal</div>
-            <button class="btn-order" onclick="addToCart('Serial Set')">Add to Cart</button>
+    <section id="contact" class="contact-section">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Address:</strong><br>
+                        #49-18-3, Lalithanagar, Opp. Laxmi Towers, Visakhapatnam - 530016
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Phone:</strong><br>
+                        9441944447 | 9247474242
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email:</strong><br>
+                        sridurgaent1969@gmail.com
+                    </div>
+                </div>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.2831412586!2d83.3101344!3d17.7311319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39433ce1c8d523%3A0x6a059530d95d852a!2sLalitha%20Nagar%2C%20Akkayyapalem%2C%20Visakhapatnam!5e0!3m2!1sen!2sin!4v1709650000000!5m2!1sen!2sin" width="100%" height="250" style="border:0; border-radius:15px;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
+    </section>
 
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1616627561950-9f746e330187" alt="Street Light">
-            <h3>Industrial Street Light</h3>
-            <p>Waterproof IP65</p>
-            <div class="price-tag">₹ Top Quality</div>
-            <button class="btn-order" onclick="addToCart('Street Light')">Add to Cart</button>
+    <div id="cartPanel" class="cart-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+            <h3>My Cart</h3>
+            <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:22px;"></i>
         </div>
-
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1581093458791-9f3c3900d08d" alt="Pipes">
-            <h3>PVC Electric Pipes</h3>
-            <p>Heavy Duty Quality</p>
-            <div class="price-tag">₹ Bulk Rate</div>
-            <button class="btn-order" onclick="addToCart('Electric Pipe')">Add to Cart</button>
+        <div id="cartItems" style="height:70%; overflow-y:auto;">
+            <p style="color:#444; text-align:center; margin-top:50px;">Your cart is empty.</p>
         </div>
+        <button class="order-now" onclick="orderWhatsApp()">
+            <i class="fab fa-whatsapp"></i> Order on WhatsApp
+        </button>
     </div>
 
-    <div class="hero">
-        <h2>Find Us Here</h2>
-    </div>
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.2831412586!2d83.3101344!3d17.7311319!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39433ce1c8d523%3A0x6a059530d95d852a!2sLalitha%20Nagar%2C%20Akkayyapalem%2C%20Visakhapatnam!5e0!3m2!1sen!2sin!4v1709650000000!5m2!1sen!2sin" 
-        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-
-    <footer id="contact">
-        <h2>V2 VASAVI ELECTRICALS</h2>
-        <p>Lalithanagar, Opp. Laxmi Towers, Visakhapatnam</p>
-        <p>Call: 9441944447 | 9247474242</p>
-        <br>
-        <p>© 2026 Crafted with ❤️ by Chaitu</p>
+    <footer>
+        <p>© 2026 V2 Vasavi Electricals | Developed by Chaitu</p>
     </footer>
 
-    <a href="https://wa.me/919441944447?text=Hi%20V2%20Vasavi,%20I%20am%20interested%20in%20your%20products." class="whatsapp-float">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <script>
-        // 1. Loading Animation Logic
-        function startApp() {
-            let bulb = document.getElementById('bulb');
-            let loader = document.getElementById('loader');
-
-            // Blink effect
-            setTimeout(() => bulb.classList.add('bulb-on'), 500);
-            setTimeout(() => bulb.classList.remove('bulb-on'), 800);
-            setTimeout(() => bulb.classList.add('bulb-on'), 1200);
-            
-            // Fade out loader
+        // 💡 Hide Loader
+        function hideLoader() {
+            const loader = document.getElementById('loader');
             setTimeout(() => {
                 loader.style.opacity = '0';
-                setTimeout(() => loader.style.display = 'none', 1000);
+                setTimeout(() => loader.style.display = 'none', 800);
             }, 2000);
         }
 
-        // 2. Add to Cart Logic
-        let count = 0;
-        function addToCart(item) {
-            count++;
-            document.getElementById('cart-count').innerText = count;
-            alert(item + " added to cart! Click WhatsApp to order.");
+        // 🛍️ Cart Logic
+        let cart = [];
+        function toggleCart(show) {
+            document.getElementById('cartPanel').classList.toggle('active', show);
         }
 
-        // 3. Search Filter Logic
-        function filterProducts() {
-            let input = document.querySelector('.search-box').value.toLowerCase();
-            let cards = document.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                let title = card.querySelector('h3').innerText.toLowerCase();
-                card.style.display = title.includes(input) ? 'block' : 'none';
-            });
+        function addToCart(name, price) {
+            cart.push({name, price});
+            renderCart();
+            toggleCart(true);
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItems');
+            document.getElementById('cartCount').innerText = cart.length;
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="color:#444; text-align:center; margin-top:50px;">Your cart is empty.</p>';
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="cart-item">
+                    <span>${item.name}</span>
+                    <i class="fas fa-trash" style="color:#ff4d4d; cursor:pointer;" onclick="removeItem(${index})"></i>
+                </div>
+            `).join('');
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function orderWhatsApp() {
+            if(cart.length === 0) return alert("Add items first!");
+            let msg = "Hello V2 Vasavi! I want to order:\n\n" + cart.map((i, idx) => (idx+1) + ". " + i.name).join("\n");
+            window.open(`https://wa.me/919441944447?text=${encodeURIComponent(msg)}`);
         }
     </script>
 </body>
