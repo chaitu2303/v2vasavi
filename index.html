@@ -10,13 +10,17 @@
         :root { --primary: #ffcc00; --dark: #050505; --glass: rgba(255, 255, 255, 0.05); --border: rgba(255, 255, 255, 0.1); }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
         body { background: var(--dark); color: #fff; overflow-x: hidden; }
+
+        /* Background Particle Effect */
         #canvas-nodes { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.3; }
 
+        /* --- Header --- */
         header { padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border); gap: 20px; }
         .logo-box { display: flex; align-items: center; gap: 10px; min-width: fit-content; }
         .logo-box img { height: 50px; width: auto; object-fit: contain; }
         .logo-box h1 { font-family: 'Syncopate', sans-serif; font-size: 16px; color: var(--primary); letter-spacing: 1px; }
 
+        /* Search Bar */
         .search-container { flex-grow: 1; max-width: 500px; position: relative; }
         .search-container input { width: 100%; padding: 10px 20px 10px 45px; border-radius: 25px; border: 1px solid var(--border); background: rgba(255,255,255,0.05); color: #fff; outline: none; }
         .search-container i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: var(--primary); }
@@ -24,31 +28,32 @@
         .cart-trigger { position: relative; cursor: pointer; font-size: 22px; color: var(--primary); }
         .cart-count { position: absolute; top: -8px; right: -12px; background: #ff0000; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 50%; }
 
-        .hero { padding: 60px 5%; text-align: center; }
-        .hero h2 { font-family: 'Syncopate', sans-serif; font-size: 2rem; margin-bottom: 10px; }
-        .hero p { color: var(--primary); letter-spacing: 5px; font-size: 10px; font-weight: bold; }
-
+        /* Products Section */
         .container { padding: 20px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
         .product-card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 15px; text-align: center; transition: 0.4s; backdrop-filter: blur(10px); }
-        .product-card:hover { border-color: var(--primary); transform: translateY(-10px); }
         .product-card img { width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 12px; margin-bottom: 15px; padding: 10px; }
-        
         .price-tag { color: var(--primary); font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block; }
-        .buy-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.3s; }
-        .buy-btn:hover { background: #fff; box-shadow: 0 0 15px var(--primary); }
-
-        .owner-section { padding: 60px 8%; background: linear-gradient(145deg, #050505, #111); display: flex; flex-wrap: wrap; gap: 50px; align-items: center; margin: 40px 5%; border-radius: 30px; }
-        .owner-img-box { position: relative; }
-        .owner-img { width: 250px; height: 320px; border-radius: 20px; object-fit: cover; border: 1px solid var(--border); }
-        .proprietor-badge { position: absolute; bottom: -15px; right: -15px; background: var(--primary); color: #000; padding: 8px 20px; border-radius: 10px; font-weight: 800; font-size: 12px; }
-
-        .map-section { padding: 40px 5%; border-radius: 30px; overflow: hidden; margin: 0 5% 40px; }
-
-        .cart-panel { position: fixed; top: 0; right: -100%; width: 350px; height: 100%; background: #080808; z-index: 2000; transition: 0.5s; padding: 30px; box-shadow: -10px 0 30px #000; border-left: 1px solid var(--border); }
-        .cart-panel.active { right: 0; }
         
+        /* Quantity Controls */
+        .qty-box { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .qty-btn { background: #222; border: 1px solid #444; color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; }
+        
+        .buy-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; }
+
+        /* --- Owner Section --- */
+        .owner-section { padding: 60px 8%; background: linear-gradient(145deg, #050505, #111); display: flex; flex-wrap: wrap; gap: 50px; align-items: center; margin: 40px 5%; border-radius: 30px; }
+        .owner-img { width: 250px; height: 320px; border-radius: 20px; object-fit: cover; border: 1px solid var(--primary); }
+        .owner-text h2 { font-family: 'Syncopate', sans-serif; color: var(--primary); font-size: 24px; }
+
+        /* Map */
+        .map-section { padding: 40px 5%; margin: 0 5% 40px; }
+
+        /* Cart Panel */
+        .cart-panel { position: fixed; top: 0; right: -100%; width: 350px; height: 100%; background: #080808; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 1px solid var(--border); }
+        .cart-panel.active { right: 0; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+
         footer { padding: 40px 5%; background: #000; text-align: center; border-top: 1px solid #111; }
-        .dev-credit a { color: var(--primary); text-decoration: none; font-weight: bold; margin: 0 10px; }
     </style>
 </head>
 <body onload="initApp()">
@@ -62,7 +67,7 @@
     </div>
     <div class="search-container">
         <i class="fas fa-search"></i>
-        <input type="text" id="liveSearch" placeholder="Search MCB, Sockets, Pipes..." onkeyup="searchProducts()">
+        <input type="text" id="liveSearch" placeholder="Search MCB, Sockets, Pipes..." onkeyup="search()">
     </div>
     <div class="cart-trigger" onclick="toggleCart(true)">
         <i class="fas fa-shopping-cart"></i>
@@ -70,88 +75,84 @@
     </div>
 </header>
 
-<section class="hero">
-    <p>ESTABLISHED 2022</p>
-    <h2>Premium Electricals</h2>
-</section>
-
-<div class="container" id="productGrid"></div>
+<div class="container" id="grid"></div>
 
 <section class="owner-section">
-    <div class="owner-img-box">
-        <img src="uncle.jpg" class="owner-img" alt="Proprietor">
-        <div class="proprietor-badge">PROPRIETOR</div>
-    </div>
+    <img src="uncle.jpg" class="owner-img" alt="Proprietor">
     <div class="owner-text">
         <h2>K. Narasimha Murthy</h2>
-        <p style="color:#666; font-size: 14px; margin-bottom: 20px;">V2 Vasavi Electricals & Hardware</p>
-        <p style="line-height: 1.8; color: #888; font-size: 14px;">Proprietor of V2 Vasavi Electricals, providing elite electrical fittings in Visakhapatnam.</p>
+        <p style="color:#666; margin: 10px 0;">Proprietor - V2 Vasavi Electricals</p>
+        <p style="color:#888; font-size: 14px;">Supplying high-quality electrical fittings across Visakhapatnam since 2022.</p>
     </div>
 </section>
 
 <div class="map-section">
-    <h3 style="text-align:center; color:var(--primary); font-family:'Syncopate'; margin-bottom:20px;">OUR LOCATION</h3>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.2223467618956!2d83.310113!3d17.734893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39433e38734301%3A0xe0e0e0e0e0e0e0e!2sLalithanagar%2C%20Visakhapatnam!5e0!3m2!1sen!2sin!4v1700000000000" width="100%" height="350" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy"></iframe>
+    <h3 style="text-align:center; color:var(--primary); margin-bottom:20px;">OUR LOCATION</h3>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.2!2d83.3!3d17.7!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQyJzAwLjAiTiA4M8KwMTgnMDAuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" width="100%" height="300" style="border:0; border-radius:20px;"></iframe>
 </div>
 
 <div id="cartPanel" class="cart-panel">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;">
-        <h2 style="font-family:'Syncopate'; font-size: 16px;">MY CART</h2>
+        <h2>CART</h2>
         <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px; color:var(--primary);"></i>
     </div>
-    <div id="cartItems" style="height:60%; overflow-y:auto;"></div>
-    <div id="totalDisplay" style="padding:20px 0; font-size:20px; font-weight:800; border-top:1px solid #333;">Total: ₹0</div>
-    <button class="buy-btn" style="background:#25d366; color:#fff;" onclick="checkout()">PLACE ORDER</button>
+    <div id="cartItems"></div>
+    <div id="total" style="padding:20px 0; font-size:20px; font-weight:bold;">Total: ₹0</div>
+    <button class="buy-btn" style="background:#25d366; color:#fff;" onclick="checkout()">ORDER ON WHATSAPP</button>
 </div>
 
 <footer>
     <p>© 2022 V2 VASAVI ELECTRICALS</p>
-    <div class="dev-credit">
-        <p>Lead Developer: <b>Chaitanya Kumar Sahu</b></p>
-        <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank">LINKEDIN</a>
-        <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank">PORTFOLIO</a>
+    <div style="margin-top:20px;">
+        <p>Developed by: <b>Chaitanya Kumar Sahu</b></p>
+        <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" style="color:var(--primary);">LinkedIn</a> | 
+        <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" style="color:var(--primary);">Portfolio</a>
     </div>
 </footer>
 
 <script>
     const products = [
         { id: 1, name: '1 Pole / 2 Pole MCB', price: 450, img: 'https://5.imimg.com/data5/ANDROID/Default/2021/3/XW/QD/FE/12185573/product-jpeg-500x500.jpg' },
-        { id: 2, name: '5 Pin / 3 Pin Socket', price: 85, img: 'https://m.media-amazon.com/images/I/41-lS-M8hML.jpg' },
-        { id: 3, name: 'PVC Conduit Pipes', price: 120, img: 'https://m.media-amazon.com/images/I/61kO+PqRmdL._AC_UF1000,1000_QL80_.jpg' },
+        { id: 2, name: 'Modular Socket', price: 85, img: 'https://m.media-amazon.com/images/I/41-lS-M8hML.jpg' },
+        { id: 3, name: 'PVC Conduit Pipe', price: 120, img: 'https://m.media-amazon.com/images/I/61kO+PqRmdL._AC_UF1000,1000_QL80_.jpg' },
         { id: 4, name: 'Junction Box', price: 45, img: 'https://m.media-amazon.com/images/I/41p95xX2Y1L.jpg' }
     ];
     let cart = {};
 
-    function initApp() { renderProducts(products); initBg(); }
-    function renderProducts(items) {
-        document.getElementById('productGrid').innerHTML = items.map(p => `
+    function initApp() { render(products); initBg(); }
+    function render(data) {
+        document.getElementById('grid').innerHTML = data.map(p => `
             <div class="product-card">
                 <img src="${p.img}">
                 <h3>${p.name}</h3>
                 <span class="price-tag">₹${p.price}</span>
-                <div style="margin-bottom:15px;"><button onclick="updateQty(${p.id},-1)">-</button> <span id="q-${p.id}">1</span> <button onclick="updateQty(${p.id},1)">+</button></div>
-                <button class="buy-btn" onclick="addToCart(${p.id})">ADD TO CART</button>
+                <div class="qty-box"><button onclick="qty(${p.id},-1)">-</button><span id="q-${p.id}">1</span><button onclick="qty(${p.id},1)">+</button></div>
+                <button class="buy-btn" onclick="add(${p.id})">ADD TO CART</button>
             </div>
         `).join('');
     }
-    function updateQty(id,d){ let e=document.getElementById('q-'+id); let v=parseInt(e.innerText)+d; if(v>=1) e.innerText=v; }
-    function addToCart(id){ let q=parseInt(document.getElementById('q-'+id).innerText); let p=products.find(x=>x.id===id); if(cart[id]) cart[id].qty+=q; else cart[id]={...p,qty:q}; renderCart(); toggleCart(true); }
-    function renderCart(){
-        let keys=Object.keys(cart), total=0;
-        document.getElementById('cartBadge').innerText=keys.length;
-        document.getElementById('cartItems').innerHTML=keys.map(k=>{
-            total+=cart[k].price*cart[k].qty;
-            return `<div style="display:flex; justify-content:space-between; margin-bottom:15px;"><div>${cart[k].name} x ${cart[k].qty}</div><div>₹${cart[k].price*cart[k].qty}</div></div>`;
-        }).join('');
-        document.getElementById('totalDisplay').innerText='Total: ₹'+total;
+    function qty(id, d) { let e=document.getElementById('q-'+id); let v=parseInt(e.innerText)+d; if(v>=1) e.innerText=v; }
+    function add(id) {
+        let q=parseInt(document.getElementById('q-'+id).innerText);
+        let p=products.find(x=>x.id===id);
+        if(cart[id]) cart[id].qty+=q; else cart[id]={...p, qty:q};
+        renderCart(); toggleCart(true);
     }
-    function toggleCart(s){ document.getElementById('cartPanel').classList.toggle('active',s); }
-    function searchProducts(){ let t=document.getElementById('liveSearch').value.toLowerCase(); renderProducts(products.filter(p=>p.name.toLowerCase().includes(t))); }
-    function checkout(){ 
-        let keys=Object.keys(cart); 
-        if(!keys.length) return alert("Empty!");
-        let m="New Order:\n"+keys.map(k=>`• ${cart[k].name} (Qty:${cart[k].qty})`).join("\n");
-        window.open("https://wa.me/919441944447?text="+encodeURIComponent(m));
+    function renderCart() {
+        let keys=Object.keys(cart), t=0;
+        document.getElementById('cartBadge').innerText = keys.length;
+        document.getElementById('cartItems').innerHTML = keys.map(k => {
+            t += cart[k].price * cart[k].qty;
+            return `<div class="cart-item"><span>${cart[k].name} x ${cart[k].qty}</span><span>₹${cart[k].price * cart[k].qty}</span></div>`;
+        }).join('');
+        document.getElementById('total').innerText = "Total: ₹" + t;
+    }
+    function toggleCart(s) { document.getElementById('cartPanel').classList.toggle('active', s); }
+    function search() { let val=document.getElementById('liveSearch').value.toLowerCase(); render(products.filter(p=>p.name.toLowerCase().includes(val))); }
+    function checkout() {
+        let items=Object.keys(cart); if(!items.length) return alert("Cart empty!");
+        let m = "V2 Vasavi Order:\n" + items.map(k=>`- ${cart[k].name} (Qty: ${cart[k].qty})`).join("\n");
+        window.open("https://wa.me/919441944447?text=" + encodeURIComponent(m));
     }
     function initBg(){ let c=document.getElementById('canvas-nodes'),x=c.getContext('2d'); c.width=window.innerWidth; c.height=window.innerHeight; let d=[]; for(let i=0;i<50;i++)d.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:Math.random()-0.5,vy:Math.random()-0.5}); function a(){ x.clearRect(0,0,c.width,c.height); x.fillStyle="#ffcc00"; d.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>c.width)p.vx*=-1; if(p.y<0||p.y>c.height)p.vy*=-1; x.beginPath(); x.arc(p.x,p.y,1,0,7); x.fill(); }); requestAnimationFrame(a); } a(); }
 </script>
