@@ -31,14 +31,12 @@
 
         /* --- HERO --- */
         .hero { padding: 60px 5%; text-align: center; }
-        .hero .est { color: var(--primary); letter-spacing: 6px; font-weight: 800; font-size: 11px; margin-bottom: 10px; display: block; }
         .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(1.5rem, 4vw, 2.5rem); margin-bottom: 15px; }
-        .hero .quote { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
+        .hero .quote { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--primary); letter-spacing: 2px; }
 
         /* --- PRODUCTS GRID --- */
         .container { padding: 40px 5% 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 20px; text-align: center; backdrop-filter: blur(10px); transition: 0.4s; }
-        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 0 20px rgba(255,204,0,0.1); }
         .card img { width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 12px; margin-bottom: 15px; padding: 10px; }
         
         .qty-controls { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 15px; }
@@ -46,13 +44,17 @@
         .add-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; font-family: 'Syncopate'; font-size: 10px; }
 
         /* --- 📦 SIDE CART PANEL --- */
-        .cart-panel { position: fixed; top: 0; right: -100%; width: 380px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--primary); box-shadow: -15px 0 40px #000; }
+        .cart-panel { position: fixed; top: 0; right: -100%; width: 400px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--primary); box-shadow: -15px 0 40px #000; }
         .cart-panel.active { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        
         .cart-items { height: 60%; overflow-y: auto; margin-bottom: 20px; }
         .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 15px; background: #111; border-radius: 12px; border: 1px solid #222; }
-        .del-item { color: #ff4d4d; cursor: pointer; font-size: 18px; transition: 0.3s; }
-        .del-item:hover { transform: scale(1.2); }
+        
+        /* Cart Specific Qty Design */
+        .cart-qty-row { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+        .cart-qty-btn { background: #222; border: 1px solid #444; color: var(--primary); width: 24px; height: 24px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+        .del-item { color: #ff4d4d; cursor: pointer; font-size: 16px; margin-left: 10px; }
 
         /* --- 📍 CONTACT & LOCATION --- */
         .contact-wrap { padding: 60px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: #080808; border-top: 1px solid var(--border); }
@@ -60,11 +62,7 @@
 
         /* --- 🔥 DEVELOPER MASTER CARD --- */
         footer { padding: 80px 8%; background: #000; text-align: center; border-top: 1px solid #111; }
-        .dev-spotlight { 
-            border: 2px solid var(--primary); padding: 40px; border-radius: 30px; 
-            display: inline-block; background: rgba(255,204,0,0.03);
-            box-shadow: 0 0 30px rgba(255, 204, 0, 0.1);
-        }
+        .dev-spotlight { border: 2px solid var(--primary); padding: 40px; border-radius: 30px; background: rgba(255,204,0,0.03); }
         .dev-btn { display: inline-block; margin: 10px; padding: 12px 25px; border: 1px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 11px; transition: 0.3s; }
         .dev-btn:hover { background: var(--primary); color: #000; }
 
@@ -86,9 +84,8 @@
 </header>
 
 <section class="hero">
-    <span class="est">ESTABLISHED 2022 • VIZAG</span>
-    <h1>EMPOWERING HOMES.<br><span style="color:var(--primary)">LIGHTING FUTURES.</span></h1>
-    <span class="quote">Quality of Service • Voltage of Trust</span>
+    <h1>THE CURRENT OF <span style="color:var(--primary)">QUALITY.</span></h1>
+    <span class="quote">"Lighting Futures, Empowering Homes."</span>
 </section>
 
 <div class="container" id="prodGrid"></div>
@@ -107,7 +104,7 @@
 
 <div id="cartPanel" class="cart-panel">
     <div class="cart-header">
-        <h2 style="font-family:'Syncopate'; color:var(--primary); font-size: 18px;">MY SHOPPING CART</h2>
+        <h2 style="font-family:'Syncopate'; color:var(--primary); font-size: 18px;">ACTIVE CART</h2>
         <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px; color:#555;"></i>
     </div>
     <div id="cartItems" class="cart-items"></div>
@@ -124,7 +121,7 @@
             <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank" class="dev-btn">PORTFOLIO</a>
         </div>
     </div>
-    <p style="margin-top:40px; opacity:0.2; font-size:10px; letter-spacing:3px;">© 2022 V2 VASAVI ELECTRICALS | VIZAG</p>
+    <p style="margin-top:40px; opacity:0.2; font-size:10px; letter-spacing:3px;">© 2022 V2 VASAVI ELECTRICALS</p>
 </footer>
 
 <script>
@@ -162,19 +159,26 @@
     function updateQty(id, d) { 
         let e=document.getElementById('qty-'+id); 
         let v=parseInt(e.innerText)+d; 
-        if(v >= 0) e.innerText = v; // Allow 0 selection
+        if(v >= 0) e.innerText = v; 
     }
 
     function addToCart(id) {
         let q=parseInt(document.getElementById('qty-'+id).innerText);
-        if(q === 0) {
-            if(cart[id]) delete cart[id]; // If 0 is added, remove from cart
-        } else {
+        if(q > 0) {
             let p=products.find(x=>x.id===id);
-            cart[id] = {...p, qty: q}; // Replace with current quantity
+            if(cart[id]) cart[id].qty += q;
+            else cart[id] = {...p, qty: q};
+            renderCart(); toggleCart(true);
         }
-        renderCart(); 
-        toggleCart(true);
+    }
+
+    // New Function: Cart Minus/Plus Logic
+    function updateCartItemQty(id, d) {
+        if(cart[id]) {
+            cart[id].qty += d;
+            if(cart[id].qty <= 0) delete cart[id];
+            renderCart();
+        }
     }
 
     function deleteFromCart(id) {
@@ -188,7 +192,7 @@
         const container = document.getElementById('cartItems');
         
         if(keys.length === 0) {
-            container.innerHTML = '<p style="text-align:center; color: #444; margin-top: 50px;">Cart is empty.</p>';
+            container.innerHTML = '<p style="text-align:center; color: #444; margin-top: 50px;">Empty Cart</p>';
             document.getElementById('total').innerText = "Total: ₹0";
             return;
         }
@@ -199,11 +203,16 @@
                 <div class="cart-item">
                     <div>
                         <div style="font-weight:bold; font-size:14px;">${cart[k].name}</div>
-                        <div style="font-size:12px; color:#777;">₹${cart[k].price} × ${cart[k].qty} Pcs</div>
+                        <div class="cart-qty-row">
+                            <button class="cart-qty-btn" onclick="updateCartItemQty(${k}, -1)">-</button>
+                            <span style="font-size:13px; font-weight:800; min-width:20px; text-align:center;">${cart[k].qty}</span>
+                            <button class="cart-qty-btn" onclick="updateCartItemQty(${k}, 1)">+</button>
+                            <span style="font-size:11px; color:#555; margin-left:5px;">Pcs</span>
+                        </div>
                     </div>
                     <div style="display:flex; align-items:center; gap:15px;">
                         <div style="font-weight:800; color:var(--primary);">₹${cart[k].price * cart[k].qty}</div>
-                        <i class="fas fa-trash-alt del-item" onclick="deleteFromCart(${k})"></i>
+                        <i class="fas fa-times del-item" onclick="deleteFromCart(${k})"></i>
                     </div>
                 </div>
             `;
@@ -214,8 +223,8 @@
     function toggleCart(s) { document.getElementById('cartPanel').classList.toggle('active', s); }
 
     function checkout() {
-        let items=Object.keys(cart); if(!items.length) return alert("Add items to order!");
-        let m = "*New Order from V2 Vasavi Website*:\n" + items.map(k=>`- ${cart[k].name} [${cart[k].qty} Pcs]`).join("\n");
+        let items=Object.keys(cart); if(!items.length) return;
+        let m = "*New Order from V2 Vasavi*:\n" + items.map(k=>`- ${cart[k].name} [${cart[k].qty} Pcs]`).join("\n");
         window.open("https://wa.me/919441944447?text=" + encodeURIComponent(m));
     }
 
