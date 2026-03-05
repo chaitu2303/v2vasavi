@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2 Vasavi Electricals | Elite Digital Store</title>
+    <title>V2 Vasavi Electricals | System Architect Chaitanya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
@@ -20,7 +20,6 @@
         .power-icon { font-size: 60px; color: #111; animation: powerOn 0.8s infinite alternate; }
         @keyframes powerOn { from { color: #111; } to { color: var(--primary); text-shadow: 0 0 20px var(--primary); } }
 
-        /* --- Header: Only Logo --- */
         header { padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); }
         .logo-only img { height: 60px; width: auto; object-fit: contain; }
 
@@ -31,97 +30,81 @@
         .hero h2 { font-family: 'Syncopate', sans-serif; font-size: 2rem; color: #fff; text-shadow: 0 0 10px var(--primary); }
         .hero p { color: var(--primary); letter-spacing: 5px; font-weight: bold; font-size: 12px; margin-top: 5px; }
 
-        /* --- Filter Chips --- */
-        .filter-wrap { padding: 0 5%; display: flex; gap: 10px; overflow-x: auto; margin-bottom: 20px; justify-content: center; }
-        .chip { padding: 8px 15px; border: 1px solid var(--border); border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; white-space: nowrap; }
-        .chip.active { background: var(--primary); color: #000; border-color: var(--primary); font-weight: bold; }
-
-        /* --- Product Grid --- */
         .container { padding: 20px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 20px; text-align: center; transition: 0.4s; }
         .card img { width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 12px; margin-bottom: 15px; padding: 10px; }
         .buy-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 12px; }
 
-        /* --- 🔥 PREMIUM PROPRIETOR SECTION --- */
-        .proprietor-wrap { padding: 80px 8%; background: linear-gradient(145deg, #050505, #111); position: relative; overflow: hidden; }
-        .proprietor-wrap::before { content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; background: var(--primary); filter: blur(150px); opacity: 0.1; }
-        
+        /* --- 👤 ELITE PROPRIETOR SECTION --- */
+        .proprietor-wrap { padding: 80px 8%; background: linear-gradient(145deg, #050505, #111); border-top: 1px solid var(--border); }
         .owner-flex { display: flex; align-items: center; gap: 60px; flex-wrap: wrap; justify-content: center; }
         .owner-image-box { position: relative; }
-        .owner-image-box img { width: 280px; height: 350px; border-radius: 30px; border: 1px solid var(--primary); object-fit: cover; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
-        .badge-pro { position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; font-family: 'Syncopate'; font-size: 10px; font-weight: 800; padding: 10px 25px; border-radius: 50px; box-shadow: 0 10px 20px rgba(255,204,0,0.3); }
+        .owner-image-box img { width: 280px; height: 350px; border-radius: 30px; border: 1px solid var(--primary); object-fit: cover; }
+        .badge-pro { position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: #000; font-family: 'Syncopate'; font-size: 10px; font-weight: 800; padding: 10px 25px; border-radius: 50px; }
 
         .owner-details h2 { font-family: 'Syncopate', sans-serif; font-size: 32px; color: var(--primary); margin-bottom: 5px; }
         .owner-details .title { font-size: 18px; color: #888; letter-spacing: 2px; margin-bottom: 25px; display: block; }
-        .owner-details .bio { line-height: 1.8; color: #ccc; max-width: 500px; }
 
         /* --- 📍 CONTACT & MAP SECTION --- */
         .contact-map-grid { padding: 60px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; background: #080808; border-top: 1px solid var(--border); }
         .contact-card h3 { font-family: 'Syncopate', sans-serif; color: var(--primary); margin-bottom: 30px; }
         .info-item { display: flex; gap: 20px; margin-bottom: 25px; }
         .info-item i { color: var(--primary); font-size: 24px; }
-        .info-item p { color: #888; font-size: 15px; }
 
-        .map-frame { border: 1px solid var(--border); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        /* Updated Map with actual Vizag Location coordinates */
+        .map-frame { border: 1px solid var(--border); border-radius: 20px; overflow: hidden; height: 350px; }
 
-        /* --- 🔥 DEVELOPER FOOTER --- */
-        footer { padding: 60px 5%; background: #000; text-align: center; border-top: 1px solid #111; }
-        .dev-spotlight { border: 1px solid var(--primary); padding: 30px; display: inline-block; border-radius: 25px; background: rgba(255,204,0,0.02); }
-        .dev-spotlight h4 { font-family: 'Syncopate', sans-serif; font-size: 10px; color: var(--primary); margin-bottom: 10px; letter-spacing: 3px; }
-        .dev-name { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 20px; }
-        .dev-links a { color: var(--primary); text-decoration: none; margin: 0 15px; font-weight: bold; border-bottom: 1px solid transparent; transition: 0.3s; }
-        .dev-links a:hover { border-color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+        /* --- 🔥 SYSTEM ARCHITECT HIGHLIGHT --- */
+        footer { padding: 80px 5%; background: #000; text-align: center; border-top: 1px solid #111; }
+        .dev-spotlight { 
+            border: 2px solid var(--primary); 
+            padding: 40px; 
+            display: inline-block; 
+            border-radius: 30px; 
+            background: rgba(255,204,0,0.03);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.1);
+        }
+        .dev-label { font-family: 'Syncopate'; font-size: 12px; color: var(--primary); margin-bottom: 10px; letter-spacing: 4px; display: block; }
+        .dev-name { font-size: 28px; font-weight: 900; color: #fff; margin-bottom: 10px; text-transform: uppercase; }
+        .dev-desc { color: #666; font-size: 14px; margin-bottom: 25px; }
+        .dev-links { display: flex; justify-content: center; gap: 20px; }
+        .dev-btn { 
+            background: var(--primary); color: #000; text-decoration: none; 
+            font-weight: 800; font-size: 12px; padding: 12px 25px; 
+            border-radius: 10px; transition: 0.3s;
+        }
+        .dev-btn:hover { background: #fff; box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
 
-        /* --- Cart Panel --- */
         .cart-panel { position: fixed; top: 0; right: -100%; width: 350px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--primary); }
         .cart-panel.active { right: 0; }
-        .cart-item { display: flex; justify-content: space-between; margin-bottom: 15px; padding: 10px; background: #111; border-radius: 10px; }
     </style>
 </head>
 <body onload="initApp()">
 
 <div id="loader">
     <i class="fas fa-bolt power-icon"></i>
-    <p style="margin-top:20px; letter-spacing: 5px; color: #555;">ENERGIZING V2 VASAVI...</p>
+    <p style="margin-top:20px; letter-spacing: 5px; color: #555;">SYSTEM ARCHITECTED BY CHAITANYA...</p>
 </div>
 
 <header>
-    <div class="logo-only">
-        <img src="logo.jpg" alt="V2 Vasavi">
-    </div>
-    <div class="cart-trigger" onclick="toggleCart(true)">
-        <i class="fas fa-shopping-basket"></i>
-        <span class="cart-count" id="badge">0</span>
-    </div>
+    <div class="logo-only"><img src="logo.jpg" alt="V2 Vasavi"></div>
+    <div class="cart-trigger" onclick="toggleCart(true)"><i class="fas fa-shopping-basket"></i><span class="cart-count" id="badge">0</span></div>
 </header>
 
 <section class="hero">
     <p>SINCE 2022</p>
     <h2>V2 VASAVI ELECTRICALS</h2>
-    <p>PREMIUM WHOLESALE & RETAIL</p>
 </section>
-
-<div class="filter-wrap">
-    <div class="chip active" onclick="filterCat('All', this)">All Items</div>
-    <div class="chip" onclick="filterCat('MCB', this)">MCB & Control</div>
-    <div class="chip" onclick="filterCat('Fittings', this)">PVC Fittings</div>
-    <div class="chip" onclick="filterCat('Switch', this)">Switches & Wires</div>
-</div>
 
 <div class="container" id="grid"></div>
 
 <section class="proprietor-wrap">
     <div class="owner-flex">
-        <div class="owner-image-box">
-            <img src="uncle.jpg" alt="K. Narasimha Murthy">
-            <div class="badge-pro">PROPRIETOR</div>
-        </div>
+        <div class="owner-image-box"><img src="uncle.jpg" alt="K. Narasimha Murthy"><div class="badge-pro">PROPRIETOR</div></div>
         <div class="owner-details">
             <h2>K. Narasimha Murthy</h2>
             <span class="title">V2 VASAVI ELECTRICALS & HARDWARE</span>
-            <p class="bio">
-                Leading the vision of V2 Vasavi since 2022, providing Visakhapatnam with elite electrical fittings and wholesale solutions. We specialize in high-quality conduit pipes, MCBs, and industrial lighting.
-            </p>
+            <p style="color:#888; line-height: 1.8; max-width: 500px;">Supplying Visakhapatnam with premium electrical fittings and industrial solutions since 2022. Expert in conduit pipes, MCBs, and lighting systems.</p>
         </div>
     </div>
 </section>
@@ -129,31 +112,23 @@
 <section class="contact-map-grid">
     <div class="contact-card">
         <h3>CONTACT US</h3>
-        <div class="info-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <p>#49-18-3, Lalithanagar,<br>Opp. Laxmi Towers, Visakhapatnam - 530016</p>
-        </div>
-        <div class="info-item">
-            <i class="fas fa-phone-alt"></i>
-            <p>9441944447 | 9247474242</p>
-        </div>
-        <div class="info-item">
-            <i class="fas fa-envelope"></i>
-            <p>sridurgaent1969@gmail.com</p>
-        </div>
+        <div class="info-item"><i class="fas fa-map-marker-alt"></i><p>#49-18-3, Lalithanagar, Opp. Laxmi Towers, Visakhapatnam - 530016</p></div>
+        <div class="info-item"><i class="fas fa-phone-alt"></i><p>9441944447 | 9247474242</p></div>
+        <div class="info-item"><i class="fas fa-envelope"></i><p>sridurgaent1969@gmail.com</p></div>
     </div>
     <div class="map-frame">
-        <iframe src="http://googleusercontent.com/maps.google.com/7" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3800.286280451636!2d83.3082573!3d17.7303033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39433e3a433e3a%3A0x3a39433e3a433e3a!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1709664000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </section>
 
 <footer>
     <div class="dev-spotlight">
-        <h4>LEAD DEVELOPER</h4>
+        <span class="dev-label">SYSTEM ARCHITECT & LEAD DEVELOPER</span>
         <p class="dev-name">Chaitanya Kumar Sahu</p>
+        <p class="dev-desc">For high-end digital solutions and business automation, connect with me:</p>
         <div class="dev-links">
-            <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank">LINKEDIN</a>
-            <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank">PORTFOLIO</a>
+            <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank" class="dev-btn">LINKEDIN</a>
+            <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank" class="dev-btn">PORTFOLIO</a>
         </div>
     </div>
     <p style="opacity: 0.2; font-size: 11px; letter-spacing: 3px; margin-top: 40px;">© 2022 V2 VASAVI ELECTRICALS | VIZAG</p>
@@ -161,7 +136,7 @@
 
 <div id="cartPanel" class="cart-panel">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;">
-        <h2 style="font-family:'Syncopate'; color:var(--primary); font-size: 18px;">MY CART</h2>
+        <h2 style="font-family:'Syncopate'; color:var(--primary); font-size: 18px;">CART</h2>
         <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px;"></i>
     </div>
     <div id="cartItems"></div>
@@ -171,58 +146,20 @@
 
 <script>
     const products = [
-        { id: 1, cat: 'MCB', name: '1 Pole / 2 Pole MCB', price: 450, img: 'mcb.jpg' },
-        { id: 2, cat: 'Switch', name: 'Modular Sockets', price: 85, img: 'socket.jpg' },
-        { id: 3, cat: 'Fittings', name: 'PVC Conduit Pipes', price: 120, img: 'pipe.jpg' },
-        { id: 4, cat: 'Fittings', name: 'Junction Box', price: 45, img: 'junction.jpg' },
-        { id: 5, cat: 'Switch', name: 'Copper Wires', price: 1250, img: 'wire.jpg' }
+        { id: 1, name: '1 Pole / 2 Pole MCB', price: 450, img: 'mcb.jpg' },
+        { id: 2, name: 'Modular Sockets', price: 85, img: 'socket.jpg' },
+        { id: 3, name: 'PVC Conduit Pipes', price: 120, img: 'pipe.jpg' },
+        { id: 4, name: 'Junction Box', price: 45, img: 'junction.jpg' },
+        { id: 5, name: 'Copper Wires', price: 1250, img: 'wire.jpg' }
     ];
     let cart = {};
 
-    function initApp() { 
-        render(products); 
-        setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 2000);
-    }
-
-    function render(data) {
-        document.getElementById('grid').innerHTML = data.map(p => `
-            <div class="card">
-                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=V2+Vasavi'">
-                <h3>${p.name}</h3>
-                <span style="color:var(--primary); font-weight:bold; display:block; margin-bottom:15px;">₹${p.price}</span>
-                <button class="buy-btn" onclick="add(${p.id})">ADD TO CART</button>
-            </div>
-        `).join('');
-    }
-
-    function filterCat(cat, el) {
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        el.classList.add('active');
-        render(cat === 'All' ? products : products.filter(p => p.cat === cat));
-    }
-
-    function add(id) {
-        let p=products.find(x=>x.id===id);
-        if(cart[id]) cart[id].qty++; else cart[id]={...p, qty:1};
-        renderCart(); toggleCart(true);
-    }
-
-    function renderCart() {
-        let keys=Object.keys(cart), t=0;
-        document.getElementById('badge').innerText = keys.length;
-        document.getElementById('cartItems').innerHTML = keys.map(k => {
-            t += cart[k].price * cart[k].qty;
-            return `<div style="display:flex; justify-content:space-between; margin-bottom:15px; padding:10px; background:#111; border-radius:10px;"><div><b>${cart[k].name}</b><br>Qty: ${cart[k].qty}</div><div>₹${cart[k].price * cart[k].qty}</div></div>`;
-        }).join('');
-        document.getElementById('total').innerText = "Total: ₹" + t;
-    }
-
+    function initApp() { render(products); setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 2000); }
+    function render(data) { document.getElementById('grid').innerHTML = data.map(p => `<div class="card"><img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=V2+Vasavi'"><h3>${p.name}</h3><span style="color:var(--primary); font-weight:bold; display:block; margin-bottom:15px;">₹${p.price}</span><button class="buy-btn" onclick="add(${p.id})">ADD TO CART</button></div>`).join(''); }
+    function add(id) { let p=products.find(x=>x.id===id); if(cart[id]) cart[id].qty++; else cart[id]={...p, qty:1}; renderCart(); toggleCart(true); }
+    function renderCart() { let keys=Object.keys(cart), t=0; document.getElementById('badge').innerText = keys.length; document.getElementById('cartItems').innerHTML = keys.map(k => { t += cart[k].price * cart[k].qty; return `<div style="display:flex; justify-content:space-between; margin-bottom:15px; padding:10px; background:#111; border-radius:10px;"><div><b>${cart[k].name}</b><br>Qty: ${cart[k].qty}</div><div>₹${cart[k].price * cart[k].qty}</div></div>`; }).join(''); document.getElementById('total').innerText = "Total: ₹" + t; }
     function toggleCart(s) { document.getElementById('cartPanel').classList.toggle('active', s); }
-    function checkout() {
-        let items=Object.keys(cart); if(!items.length) return alert("Empty!");
-        let m = "*Order from V2 Vasavi*:\n" + items.map(k=>`- ${cart[k].name} (Qty: ${cart[k].qty})`).join("\n");
-        window.open("https://wa.me/919441944447?text=" + encodeURIComponent(m));
-    }
+    function checkout() { let items=Object.keys(cart); if(!items.length) return alert("Empty!"); let m = "*Order from V2 Vasavi*:\n" + items.map(k=>`- ${cart[k].name} (Qty: ${cart[k].qty})`).join("\n"); window.open("https://wa.me/919441944447?text=" + encodeURIComponent(m)); }
 </script>
 </body>
 </html>
