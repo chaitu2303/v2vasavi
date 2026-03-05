@@ -3,195 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2 Vasavi Electricals | Professional Digital Store</title>
+    <title>V2 Vasavi Electricals | Lead Developer Chaitanya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;500;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --neon-yellow: #f4d03f;
-            --bg-dark: #050505;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-        }
+        :root { --primary: #ffcc00; --dark: #050505; --glass: rgba(255, 255, 255, 0.05); --border: rgba(255, 255, 255, 0.1); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        body { background: var(--dark); color: #fff; overflow-x: hidden; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; }
-        body { background: var(--bg-dark); color: #fff; overflow-x: hidden; }
-
-        /* --- ⚡ Loading Animation --- */
+        /* --- 💡 Power On Animation --- */
         #loader {
             position: fixed; width: 100%; height: 100vh; background: #000;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             z-index: 9999; transition: opacity 0.8s ease;
         }
-        .power-icon { font-size: 60px; color: #111; animation: powerBlink 0.8s infinite alternate; }
-        @keyframes powerBlink { from { color: #111; } to { color: var(--neon-yellow); text-shadow: 0 0 20px var(--neon-yellow); } }
+        .power-icon { font-size: 60px; color: #111; animation: powerOn 0.8s infinite alternate; }
+        @keyframes powerOn { from { color: #111; } to { color: var(--primary); text-shadow: 0 0 20px var(--primary); } }
 
-        /* --- Header --- */
-        header {
-            padding: 12px 5%; display: flex; justify-content: space-between; align-items: center;
-            background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
-            position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--neon-yellow);
-        }
+        header { padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); gap: 15px; }
         .logo-box { display: flex; align-items: center; gap: 10px; }
-        .logo-box img { height: 55px; width: auto; border-radius: 5px; border: 1px solid var(--neon-yellow); }
-        .logo-box h1 { font-family: 'Orbitron', sans-serif; font-size: 18px; color: var(--neon-yellow); letter-spacing: 2px; }
+        .logo-box img { height: 50px; width: auto; object-fit: contain; }
+        .logo-box h1 { font-family: 'Syncopate', sans-serif; font-size: 14px; color: var(--primary); letter-spacing: 2px; }
 
-        .search-bar { flex-grow: 1; max-width: 400px; margin: 0 20px; position: relative; }
-        .search-bar input { width: 100%; padding: 10px 40px; border-radius: 25px; border: 1px solid #222; background: #111; color: #fff; outline: none; }
-        .search-bar i { position: absolute; left: 15px; top: 12px; color: var(--neon-yellow); }
+        .cart-trigger { position: relative; cursor: pointer; font-size: 22px; color: var(--primary); }
+        .cart-count { position: absolute; top: -8px; right: -12px; background: red; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 50%; }
 
-        .cart-btn { position: relative; cursor: pointer; color: var(--neon-yellow); font-size: 24px; }
-        .cart-badge { position: absolute; top: -8px; right: -10px; background: #ff0000; color: white; font-size: 10px; padding: 2px 6px; border-radius: 50%; }
-
-        /* --- Hero --- */
         .hero { padding: 60px 5%; text-align: center; }
-        .hero h2 { font-family: 'Orbitron', sans-serif; font-size: 2.5rem; text-shadow: 0 0 15px var(--neon-yellow); }
-        .hero p { color: var(--neon-yellow); letter-spacing: 6px; font-weight: bold; font-size: 12px; }
+        .hero h2 { font-family: 'Syncopate', sans-serif; font-size: 2rem; color: #fff; text-shadow: 0 0 10px var(--primary); }
+        .hero p { color: var(--primary); letter-spacing: 5px; font-weight: bold; font-size: 12px; margin-top: 5px; }
 
-        /* --- Products Grid --- */
-        .container { padding: 30px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--glass); border: 1px solid var(--border); padding: 20px; border-radius: 15px; text-align: center; transition: 0.4s; }
-        .card:hover { border-color: var(--neon-yellow); transform: translateY(-10px); }
-        .card img { width: 100%; height: 200px; object-fit: contain; background: #fff; border-radius: 10px; margin-bottom: 15px; padding: 10px; }
-        
-        .price { color: var(--neon-yellow); font-size: 20px; font-weight: bold; margin-bottom: 10px; display: block; }
-        
-        .qty-row { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .qty-btn { background: #1a1a1a; border: 1px solid #333; color: #fff; width: 30px; height: 30px; border-radius: 5px; cursor: pointer; }
-        .add-btn { width: 100%; padding: 12px; background: var(--neon-yellow); color: #000; border: none; border-radius: 5px; font-weight: bold; font-family: 'Orbitron'; cursor: pointer; }
+        /* --- Filtering Chips --- */
+        .filter-wrap { padding: 0 5%; display: flex; gap: 10px; overflow-x: auto; margin-bottom: 20px; justify-content: center; }
+        .chip { padding: 8px 15px; border: 1px solid var(--border); border-radius: 20px; font-size: 12px; cursor: pointer; transition: 0.3s; white-space: nowrap; }
+        .chip.active { background: var(--primary); color: #000; border-color: var(--primary); font-weight: bold; }
 
-        /* --- Owner & Map --- */
+        .container { padding: 20px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 20px; text-align: center; transition: 0.4s; }
+        .card img { width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 12px; margin-bottom: 15px; padding: 10px; }
+        .buy-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: bold; font-family: 'Syncopate'; cursor: pointer; font-size: 12px; transition: 0.3s; }
+        .buy-btn:hover { background: #fff; box-shadow: 0 0 15px var(--primary); }
+
+        /* --- OWNER SECTION --- */
         .owner-section { padding: 50px 8%; background: #080808; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; border-top: 1px solid var(--border); }
-        .owner-card { display: flex; gap: 20px; align-items: center; background: rgba(255,255,255,0.02); padding: 25px; border-radius: 20px; border: 1px solid var(--border); flex: 1; min-width: 300px; }
-        .owner-card img { width: 140px; height: 180px; object-fit: cover; border-radius: 10px; border: 2px solid var(--neon-yellow); }
+        .owner-card img { width: 130px; height: 160px; object-fit: cover; border-radius: 10px; border: 2px solid var(--primary); }
 
-        .map-box { margin-top: 30px; border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+        /* --- 🔥 HIGHLIGHTED DEVELOPER FOOTER --- */
+        footer { padding: 60px 5%; background: #000; text-align: center; border-top: 1px solid #111; }
+        .dev-spotlight {
+            border: 2px solid var(--primary);
+            padding: 30px;
+            display: inline-block;
+            border-radius: 25px;
+            background: linear-gradient(145deg, #050505, #0f0f0f);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.1);
+            position: relative;
+        }
+        .dev-badge {
+            background: var(--primary); color: #000;
+            padding: 5px 15px; font-size: 10px; font-weight: 800;
+            border-radius: 5px; position: absolute; top: -12px; left: 50%;
+            transform: translateX(-50%); font-family: 'Syncopate';
+        }
+        .dev-name { font-size: 24px; font-weight: 800; letter-spacing: 1px; color: #fff; margin: 10px 0; }
+        .dev-links a { color: var(--primary); text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 13px; transition: 0.3s; }
+        .dev-links a:hover { color: #fff; text-shadow: 0 0 10px var(--primary); }
 
-        /* --- 📦 Creator Box --- */
-        .creator-box { margin: 40px 5% 60px; padding: 40px; background: linear-gradient(145deg, #111, #050505); border: 1px solid var(--neon-yellow); border-radius: 25px; text-align: center; position: relative; }
-        .creator-box h4 { font-family: 'Orbitron'; color: var(--neon-yellow); font-size: 14px; margin-bottom: 5px; }
-        .creator-links a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; font-size: 14px; border: 1px solid #333; padding: 8px 15px; border-radius: 5px; transition: 0.3s; }
-        .creator-links a:hover { background: var(--neon-yellow); color: #000; border-color: var(--neon-yellow); }
-
-        /* --- Cart Panel --- */
-        .cart-panel { position: fixed; top: 0; right: -100%; width: 350px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--neon-yellow); }
+        .cart-panel { position: fixed; top: 0; right: -100%; width: 350px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--primary); }
         .cart-panel.active { right: 0; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 12px; background: #151515; border-radius: 8px; border: 1px solid #222; }
-
     </style>
 </head>
-<body onload="init()">
+<body onload="initApp()">
 
 <div id="loader">
     <i class="fas fa-bolt power-icon"></i>
-    <p style="margin-top:20px; color: #444; letter-spacing: 4px; font-family: 'Orbitron';">ENERGIZING V2 VASAVI...</p>
+    <p style="margin-top:20px; letter-spacing: 5px; color: #555;">SYSTEM BOOTING...</p>
 </div>
 
 <header>
-    <div class="logo-box">
-        <img src="logo.jpg" alt="V2">
-        <h1>V2 VASAVI</h1>
-    </div>
-    <div class="search-bar">
-        <i class="fas fa-search"></i>
-        <input type="text" id="search" placeholder="Search MCB, Sockets, Pipes..." onkeyup="filter()">
-    </div>
-    <div class="cart-btn" onclick="toggleCart(true)">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge" id="badge">0</span>
-    </div>
+    <div class="logo-box"><img src="logo.jpg" alt="V2"><h1>V2 VASAVI</h1></div>
+    <div class="cart-trigger" onclick="toggleCart(true)"><i class="fas fa-shopping-basket"></i><span class="cart-count" id="badge">0</span></div>
 </header>
 
 <section class="hero">
     <p>ESTABLISHED 2022</p>
     <h2>V2 VASAVI ELECTRICALS</h2>
-    <p>QUALITY • DURABILITY • TRUST</p>
+    <p>POWER • PRECISION • TRUST</p>
 </section>
+
+<div class="filter-wrap">
+    <div class="chip active" onclick="filterCat('All', this)">All Items</div>
+    <div class="chip" onclick="filterCat('Fittings', this)">PVC Fittings</div>
+    <div class="chip" onclick="filterCat('Switch', this)">Switches & Sockets</div>
+    <div class="chip" onclick="filterCat('MCB', this)">MCB & Control</div>
+</div>
 
 <div class="container" id="grid"></div>
 
 <section class="owner-section">
-    <div class="owner-card">
-        <img src="uncle.jpg" alt="Proprietor">
-        <div>
-            <h3 style="color:var(--neon-yellow); font-family: 'Orbitron';">K. Narasimha Murthy</h3>
-            <p style="font-size: 14px; color: #666; margin-bottom: 10px;">Proprietor - V2 Vasavi Electricals</p>
-            <p style="font-size: 13px; color: #888;">Leading electrical solutions in Visakhapatnam since 2022.</p>
-        </div>
-    </div>
-    <div style="flex: 1; min-width: 300px;">
-        <h4 style="color:var(--neon-yellow); margin-bottom: 10px; font-family: 'Orbitron';">LOCATION</h4>
-        <div class="map-box">
-            <iframe src="http://googleusercontent.com/maps.google.com/5" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
+    <div class="owner-card"><img src="uncle.jpg" alt="Proprietor"><div><h3 style="color:var(--primary); font-family: 'Syncopate';">K. Narasimha Murthy</h3><p style="color: #666; font-size: 14px;">Proprietor - V2 Vasavi</p></div></div>
 </section>
 
-<div class="creator-box">
-    <h4>ARCHITECT</h4>
-    <h3>Chaitanya Kumar Sahu</h3>
-    <div class="creator-links" style="margin-top: 20px;">
-        <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank">LinkedIn</a>
-        <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank">Portfolio</a>
+<footer>
+    <div class="dev-spotlight">
+        <div class="dev-badge">LEAD DEVELOPER</div>
+        <p class="dev-name">Chaitanya Kumar Sahu</p>
+        <p style="color:#555; font-size:12px; margin-bottom: 20px;">Full Stack Architecture & Digital Store Design</p>
+        <div class="dev-links">
+            <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+        </div>
     </div>
-</div>
+    <p style="opacity: 0.2; font-size: 11px; letter-spacing: 3px; margin-top: 40px;">© 2022 V2 VASAVI ELECTRICALS | VISAKHAPATNAM</p>
+</footer>
 
 <div id="cartPanel" class="cart-panel">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px;">
-        <h2 style="font-family:'Orbitron'; color:var(--neon-yellow);">MY CART</h2>
+        <h2 style="font-family:'Syncopate'; color:var(--primary); font-size: 18px;">CART</h2>
         <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px;"></i>
     </div>
     <div id="cartItems"></div>
-    <div id="total" style="font-size: 22px; font-weight: bold; margin: 20px 0; border-top: 1px solid #222; padding-top: 20px; color:var(--neon-yellow);">Total: ₹0</div>
-    <button class="add-btn" style="background:#25d366; color:#fff;" onclick="checkout()">
-        <i class="fab fa-whatsapp"></i> PLACE WHATSAPP ORDER
-    </button>
+    <div id="total" style="font-size: 22px; font-weight: bold; margin: 20px 0; border-top: 1px solid #333; padding-top: 20px; color:var(--primary);">Total: ₹0</div>
+    <button class="buy-btn" style="background:#25d366; color:#fff;" onclick="checkout()">WHATSAPP ORDER</button>
 </div>
 
-<footer style="text-align:center; padding: 30px; border-top: 1px solid #111; color: #333; font-size: 11px; letter-spacing: 2px;">
-    © 2022 V2 VASAVI ELECTRICALS | VISAKHAPATNAM
-</footer>
-
 <script>
-    // --- Nuvvu Github lo upload chese images names correct ga ikkada map avthayi ---
     const products = [
-        { id: 1, name: '1 Pole / 2 Pole MCB', price: 450, img: 'mcb.jpg' },
-        { id: 2, name: 'Modular Switches', price: 85, img: 'socket.jpg' },
-        { id: 3, name: 'PVC Conduit Pipes', price: 120, img: 'pipe.jpg' },
-        { id: 4, name: 'Junction Boxes', price: 45, img: 'junction.jpg' },
-        { id: 5, name: 'Electrical Wires', price: 850, img: 'wire.jpg' }
+        { id: 1, cat: 'MCB', name: '1 Pole / 2 Pole MCB', price: 450, img: 'mcb.jpg' },
+        { id: 2, cat: 'Switch', name: 'Modular Sockets', price: 85, img: 'socket.jpg' },
+        { id: 3, cat: 'Fittings', name: 'PVC Conduit Pipes', price: 120, img: 'pipe.jpg' },
+        { id: 4, cat: 'Fittings', name: 'Junction Box', price: 45, img: 'junction.jpg' },
+        { id: 5, cat: 'Switch', name: 'Copper Wires', price: 1250, img: 'wire.jpg' }
     ];
     let cart = {};
 
-    function init() { 
+    function initApp() { 
         render(products); 
-        setTimeout(() => {
-            document.getElementById('loader').style.opacity = '0';
-            setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
-        }, 2000);
+        setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 800); }, 2000);
     }
 
     function render(data) {
         document.getElementById('grid').innerHTML = data.map(p => `
             <div class="card">
-                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=Image+Missing'">
-                <h3 style="margin-bottom:10px;">${p.name}</h3>
-                <span class="price">₹${p.price}</span>
-                <div class="qty-row">
-                    <button class="qty-btn" onclick="q(${p.id},-1)">-</button>
-                    <span id="qty-${p.id}" style="font-weight:bold; width:20px;">1</span>
-                    <button class="qty-btn" onclick="q(${p.id},1)">+</button>
-                </div>
-                <button class="add-btn" onclick="add(${p.id})">ADD TO CART</button>
+                <img src="${p.img}" onerror="this.src='https://via.placeholder.com/200?text=V2+Vasavi'">
+                <h3>${p.name}</h3>
+                <span style="color:var(--primary); font-weight:bold; display:block; margin-bottom:15px;">₹${p.price}</span>
+                <button class="buy-btn" onclick="add(${p.id})">ADD TO CART</button>
             </div>
         `).join('');
     }
 
-    function q(id, d) { let e=document.getElementById('qty-'+id); let v=parseInt(e.innerText)+d; if(v>=1) e.innerText=v; }
+    function filterCat(cat, el) {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        render(cat === 'All' ? products : products.filter(p => p.cat === cat));
+    }
+
     function add(id) {
-        let qty=parseInt(document.getElementById('qty-'+id).innerText);
         let p=products.find(x=>x.id===id);
-        if(cart[id]) cart[id].qty+=qty; else cart[id]={...p, qty:qty};
+        if(cart[id]) cart[id].qty++; else cart[id]={...p, qty:1};
         renderCart(); toggleCart(true);
     }
 
@@ -200,17 +169,15 @@
         document.getElementById('badge').innerText = keys.length;
         document.getElementById('cartItems').innerHTML = keys.map(k => {
             t += cart[k].price * cart[k].qty;
-            return `<div class="cart-item"><div><b>${cart[k].name}</b><br>Qty: ${cart[k].qty}</div><div>₹${cart[k].price * cart[k].qty}</div></div>`;
+            return `<div style="display:flex; justify-content:space-between; margin-bottom:15px; padding:10px; background:#111; border-radius:10px;"><div><b>${cart[k].name}</b><br>Qty: ${cart[k].qty}</div><div>₹${cart[k].price * cart[k].qty}</div></div>`;
         }).join('');
         document.getElementById('total').innerText = "Total: ₹" + t;
     }
 
     function toggleCart(s) { document.getElementById('cartPanel').classList.toggle('active', s); }
-    function filter() { let val=document.getElementById('search').value.toLowerCase(); render(products.filter(p=>p.name.toLowerCase().includes(val))); }
-    
     function checkout() {
-        let items=Object.keys(cart); if(!items.length) return alert("Cart empty!");
-        let m = "*Order from V2 Vasavi Website*:\n" + items.map(k=>`- ${cart[k].name} (Qty: ${cart[k].qty})`).join("\n");
+        let items=Object.keys(cart); if(!items.length) return alert("Empty!");
+        let m = "*Order from V2 Vasavi*:\n" + items.map(k=>`- ${cart[k].name} (Qty: ${cart[k].qty})`).join("\n");
         window.open("https://wa.me/919441944447?text=" + encodeURIComponent(m));
     }
 </script>
