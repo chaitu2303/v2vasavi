@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V2 Vasavi Electricals | Lead Developer Chaitanya</title>
+    <title>V2 Vasavi Electricals | System Architect Chaitanya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Montserrat:wght@300;500;800&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <style>
@@ -11,7 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
         body { background: var(--dark); color: #fff; overflow-x: hidden; }
 
-        /* --- ⚡ PRO ANIMATED BACKGROUND --- */
+        /* --- ⚡ ANIMATED CIRCUIT BACKGROUND --- */
         #bg-canvas { position: fixed; top: 0; left: 0; z-index: -1; opacity: 0.3; }
 
         /* --- 🔌 VOLTAGE LOADER --- */
@@ -23,71 +23,66 @@
         .bolt-icon { font-size: 70px; color: #111; animation: voltGlow 0.8s infinite alternate; }
         @keyframes voltGlow { from { color: #111; } to { color: var(--primary); text-shadow: 0 0 40px var(--primary); } }
 
-        /* --- Header --- */
-        header { padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(20px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); gap: 15px; }
+        /* --- HEADER --- */
+        header { padding: 10px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(25px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--primary); gap: 15px; }
         .logo-box { display: flex; align-items: center; gap: 10px; }
         .logo-box img { height: 50px; filter: drop-shadow(0 0 5px var(--primary)); }
         .logo-box h1 { font-family: 'Syncopate', sans-serif; font-size: 14px; color: var(--primary); letter-spacing: 2px; }
 
         .search-container { flex-grow: 1; max-width: 400px; position: relative; }
-        .search-container input { width: 100%; padding: 10px 40px; border-radius: 25px; border: 1px solid var(--border); background: #111; color: #fff; outline: none; transition: 0.3s; }
-        .search-container input:focus { border-color: var(--primary); background: #181818; }
+        .search-container input { width: 100%; padding: 10px 40px; border-radius: 25px; border: 1px solid var(--border); background: #111; color: #fff; outline: none; }
         .search-container i { position: absolute; left: 15px; top: 12px; color: var(--primary); }
 
-        .cart-trigger { position: relative; cursor: pointer; font-size: 22px; color: var(--primary); }
+        .cart-trigger { position: relative; cursor: pointer; font-size: 24px; color: var(--primary); }
         .cart-badge { position: absolute; top: -10px; right: -12px; background: #ff0000; color: #fff; font-size: 10px; padding: 2px 7px; border-radius: 50%; font-weight: 800; border: 2px solid #000; }
 
-        /* --- Hero --- */
-        .hero { padding: 80px 5% 40px; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); }
-        .hero .est { color: var(--primary); letter-spacing: 6px; font-weight: 800; font-size: 11px; margin-bottom: 10px; display: block; }
+        /* --- HERO --- */
+        .hero { padding: 80px 5% 40px; text-align: center; }
         .hero h1 { font-family: 'Syncopate', sans-serif; font-size: clamp(1.8rem, 5vw, 2.8rem); margin-bottom: 15px; }
-        .hero .quote { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 15px rgba(255,204,0,0.3); }
+        .hero .quote { font-family: 'Orbitron', sans-serif; font-size: 1rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- Dynamic Filtering --- */
+        /* --- FILTERING --- */
         .filter-wrap { padding: 0 5%; display: flex; gap: 12px; overflow-x: auto; margin-bottom: 20px; justify-content: center; }
-        .chip { padding: 10px 20px; border: 1px solid var(--border); border-radius: 25px; font-size: 12px; cursor: pointer; transition: 0.3s; white-space: nowrap; backdrop-filter: blur(10px); }
-        .chip:hover { border-color: var(--primary); }
+        .chip { padding: 10px 20px; border: 1px solid var(--border); border-radius: 25px; font-size: 11px; cursor: pointer; transition: 0.3s; white-space: nowrap; font-family: 'Syncopate'; }
         .chip.active { background: var(--primary); color: #000; border-color: var(--primary); font-weight: bold; }
 
-        /* --- Products Grid --- */
+        /* --- PRODUCTS --- */
         .container { padding: 20px 5% 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 20px; text-align: center; transition: 0.4s; backdrop-filter: blur(10px); display: none; } /* Default hide for filtering */
-        .card.visible { display: block; }
-        .card:hover { border-color: var(--primary); transform: translateY(-10px); box-shadow: 0 10px 30px rgba(255,204,0,0.1); }
+        .card { background: var(--glass); border: 1px solid var(--border); border-radius: 20px; padding: 20px; text-align: center; backdrop-filter: blur(10px); transition: 0.4s; }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
         .card img { width: 100%; height: 180px; object-fit: contain; background: #fff; border-radius: 12px; margin-bottom: 15px; padding: 10px; }
         
-        .qty-controls { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 15px; }
-        .qty-btn { background: #1a1a1a; border: 1px solid #333; color: var(--primary); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-        .qty-btn:hover { background: var(--primary); color: #000; }
-        
-        .add-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; font-family: 'Syncopate'; font-size: 10px; transition: 0.3s; }
-        .add-btn:hover { background: #fff; }
+        .qty-row { display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 15px; }
+        .qty-btn { background: #1a1a1a; border: 1px solid #333; color: var(--primary); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .add-btn { width: 100%; padding: 12px; background: var(--primary); color: #000; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; font-family: 'Syncopate'; font-size: 10px; }
 
-        /* --- 📦 Cart Panel --- */
-        .cart-panel { position: fixed; top: 0; right: -100%; width: 380px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--primary); box-shadow: -15px 0 40px #000; }
+        /* --- 👤 PROPRIETOR --- */
+        .owner-section { padding: 60px 8%; background: #080808; display: flex; flex-wrap: wrap; gap: 50px; align-items: center; border-top: 1px solid var(--border); }
+        .owner-card { display: flex; gap: 25px; align-items: center; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border: 1px solid var(--border); flex: 1; min-width: 320px; }
+        .owner-card img { width: 140px; height: 180px; object-fit: cover; border-radius: 10px; border: 2px solid var(--primary); }
+
+        /* --- 📍 CONTACT & MAP --- */
+        .contact-wrap { padding: 60px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: #050505; border-top: 1px solid var(--border); }
+        .map-box { border-radius: 25px; overflow: hidden; border: 1px solid var(--border); height: 350px; filter: grayscale(1) invert(1); }
+
+        /* --- 📦 ADVANCED CART PANEL --- */
+        .cart-panel { position: fixed; top: 0; right: -100%; width: 400px; height: 100%; background: #0a0a0a; z-index: 2000; transition: 0.5s; padding: 30px; border-left: 2px solid var(--primary); box-shadow: -20px 0 50px #000; }
         .cart-panel.active { right: 0; }
         .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #222; padding-bottom: 15px; }
         .cart-items { height: 65%; overflow-y: auto; margin-bottom: 20px; }
-        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 12px; background: #111; border-radius: 12px; border: 1px solid #222; }
-        .qty-label { font-size: 12px; color: #777; margin-top: 3px; }
+        
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding: 15px; background: #111; border-radius: 12px; border: 1px solid #222; }
+        .cart-item-controls { display: flex; align-items: center; gap: 10px; margin-top: 5px; }
+        .cart-qty-btn { background: #222; border: 1px solid #444; color: var(--primary); width: 28px; height: 28px; border-radius: 5px; cursor: pointer; font-size: 12px; }
+        .del-btn { color: #ff4d4d; cursor: pointer; font-size: 18px; margin-left: 15px; }
 
-        /* --- 👤 Proprietor & Contact --- */
-        .owner-section { padding: 60px 8%; background: #080808; display: flex; flex-wrap: wrap; gap: 50px; align-items: center; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-        .owner-card { display: flex; gap: 25px; align-items: center; background: rgba(255,255,255,0.02); padding: 30px; border-radius: 20px; border: 1px solid var(--border); flex: 1; min-width: 320px; }
-        .owner-card img { width: 140px; height: 180px; object-fit: cover; border-radius: 10px; border: 2px solid var(--primary); box-shadow: 0 0 20px rgba(255,204,0,0.1); }
-        .owner-info h2 { font-family: 'Syncopate', sans-serif; color: var(--primary); margin-bottom: 10px; font-size: 18px; }
-
-        .contact-wrap { padding: 60px 8%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; background: #050505; }
-        .map-box { border-radius: 25px; overflow: hidden; border: 1px solid var(--border); height: 300px; filter: grayscale(1) invert(1); }
-
-        /* --- 📦 Final Developer Spotlight --- */
+        /* --- FOOTER --- */
         footer { padding: 80px 8%; background: #000; text-align: center; border-top: 1px solid #111; }
-        .dev-spotlight { border: 2px solid var(--primary); padding: 40px; border-radius: 30px; display: inline-block; background: rgba(255,204,0,0.03); box-shadow: 0 0 30px rgba(255, 204, 0, 0.1); }
-        .dev-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
-        .dev-btn { padding: 12px 25px; border: 1px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 11px; transition: 0.3s; }
+        .dev-spotlight { border: 2px solid var(--primary); padding: 40px; border-radius: 30px; display: inline-block; background: rgba(255,204,0,0.03); }
+        .dev-btn { display: inline-block; margin: 10px; padding: 12px 25px; border: 1px solid var(--primary); color: var(--primary); text-decoration: none; border-radius: 10px; font-weight: 800; font-size: 11px; transition: 0.3s; }
         .dev-btn:hover { background: var(--primary); color: #000; }
 
-        @media (max-width: 600px) { header h1 { font-size: 12px; } .hero h1 { font-size: 1.5rem; } .cart-panel { width: 100%; } .filter-wrap { justify-content: flex-start; } }
+        @media (max-width: 600px) { .cart-panel { width: 100%; } }
     </style>
 </head>
 <body onload="initApp()">
@@ -100,26 +95,24 @@
 </div>
 
 <header>
-    <div class="logo-box"><img src="logo.jpg" alt="V2 Vasavi Electricals"><h1>V2 VASAVI</h1></div>
+    <div class="logo-box"><img src="logo.jpg" alt="V2"><h1>V2 VASAVI</h1></div>
     <div class="search-container">
         <i class="fas fa-search"></i>
-        <input type="text" id="search" placeholder="Search MCB, Sockets, Pipes..." onkeyup="searchProducts()">
+        <input type="text" id="search" placeholder="Search MCB, Sockets..." onkeyup="searchProducts()">
     </div>
-    <div class="cart-trigger" onclick="toggleCart(true)"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="badge">0</span></div>
+    <div class="cart-trigger" onclick="toggleCart(true)"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></div>
 </header>
 
 <section class="hero">
-    <span class="est">ESTABLISHED 2022 • VIZAG</span>
-    <h1>THE CURRENT OF <span style="color:var(--primary)">QUALITY.</span><br>THE VOLTAGE OF <span style="color:var(--primary)">TRUST.</span></h1>
+    <h1>CURRENT OF <span style="color:var(--primary)">QUALITY.</span></h1>
     <span class="quote">"Lighting Futures, Empowering Homes."</span>
 </section>
 
 <div class="filter-wrap">
-    <div class="chip active" onclick="filterCategory('all', this)">All Items</div>
-    <div class="chip" onclick="filterCategory('Fittings', this)">PVC Fittings</div>
-    <div class="chip" onclick="filterCategory('Switch', this)">Modular Switches</div>
-    <div class="chip" onclick="filterCategory('MCB', this)">MCB & Control</div>
-    <div class="chip" onclick="filterCategory('Wire', this)">Wires & Cables</div>
+    <div class="chip active" onclick="filterCat('all', this)">All Items</div>
+    <div class="chip" onclick="filterCat('MCB', this)">MCB Units</div>
+    <div class="chip" onclick="filterCat('Switch', this)">Switches</div>
+    <div class="chip" onclick="filterCat('Fittings', this)">PVC Fittings</div>
 </div>
 
 <div class="container" id="grid"></div>
@@ -128,18 +121,18 @@
     <div class="owner-card">
         <img src="uncle.jpg" alt="K. Narasimha Murthy">
         <div>
-            <h2>K. Narasimha Murthy</h2>
-            <p style="color:#666; font-size: 14px; margin-bottom: 10px;">Proprietor - V2 Vasavi Electricals</p>
-            <p style="font-size: 13px; color: #888; line-height: 1.6;">A committed supplier of premium electrical fittings and industrial solutions in Visakhapatnam since 2022. Reliability is our core promise.</p>
+            <h3 style="font-family:'Syncopate'; color:var(--primary);">K. Narasimha Murthy</h3>
+            <p style="color: #666; font-size: 14px; margin-bottom: 10px;">Proprietor - V2 Vasavi Electricals</p>
+            <p style="color: #888; font-size: 13px; line-height: 1.6;">Dedicated supplier of high-end electrical solutions in Visakhapatnam since 2022. Expert in industrial MCB, Conduit pipes, and quality wiring.</p>
         </div>
     </div>
 </section>
 
 <section class="contact-wrap">
     <div>
-        <h3 style="font-family:'Syncopate'; color:var(--primary); margin-bottom:20px;">VISIT OUR STORE</h3>
-        <p style="margin-bottom:10px;"><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> #49-18-3, Lalithanagar, Vizag</p>
-        <p style="margin-bottom:10px;"><i class="fas fa-phone-alt" style="color:var(--primary);"></i> +91 94419 44447</p>
+        <h3 style="font-family:'Syncopate'; color:var(--primary); margin-bottom:30px;">LOCATION</h3>
+        <p style="margin-bottom:15px;"><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> #49-18-3, Lalithanagar, Vizag-16</p>
+        <p style="margin-bottom:15px;"><i class="fas fa-phone-alt" style="color:var(--primary);"></i> +91 94419 44447</p>
         <p><i class="fas fa-envelope" style="color:var(--primary);"></i> sridurgaent1969@gmail.com</p>
     </div>
     <div class="map-box">
@@ -147,132 +140,157 @@
     </div>
 </section>
 
-<footer>
-    <div class="dev-spotlight">
-        <p style="font-family:'Syncopate'; color:var(--primary); font-size:10px; letter-spacing:4px; margin-bottom:10px;">SYSTEM ARCHITECT & DEVELOPER</p>
-        <h2 style="font-size:28px; font-weight:900; margin-bottom:10px;">Chaitanya Kumar Sahu</h2>
-        <p style="color:#555; font-size:14px; margin-bottom: 20px;">Crafting Digital Storefronts for Local Businesses.</p>
-        <div class="dev-links">
-            <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank" class="dev-btn"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank" class="dev-btn"><i class="fas fa-code"></i> Portfolio</a>
-        </div>
-    </div>
-    <p style="margin-top:40px; opacity:0.2; font-size:10px; letter-spacing:3px;">© 2022 V2 VASAVI ELECTRICALS | VISAKHAPATNAM</p>
-</footer>
-
 <div id="cartPanel" class="cart-panel">
     <div class="cart-header">
         <h2 style="font-family:'Syncopate'; color:var(--primary); font-size: 18px;">ACTIVE CART</h2>
         <i class="fas fa-times" onclick="toggleCart(false)" style="cursor:pointer; font-size:24px; color:#555;"></i>
     </div>
     <div id="cartItems" class="cart-items"></div>
-    <div id="total" style="font-size: 22px; font-weight: bold; margin: 20px 0; border-top: 1px solid #222; padding-top: 20px; color:var(--primary);">Total: ₹0</div>
-    <button class="add-btn" style="background:#25d366; color:#fff;" onclick="checkout()">
-        <i class="fab fa-whatsapp"></i> PLACE WHATSAPP ORDER
-    </button>
+    <div id="total" style="font-size: 22px; font-weight: bold; margin: 20px 0; border-top: 1px solid #333; padding-top: 20px; color:var(--primary);">Total: ₹0</div>
+    <button class="add-btn" style="background:#25d366; color:#fff;" onclick="checkout()">ORDER ON WHATSAPP</button>
 </div>
+
+<footer>
+    <div class="dev-spotlight">
+        <p style="font-family:'Syncopate'; color:var(--primary); font-size:10px; letter-spacing:4px; margin-bottom:10px;">SYSTEM ARCHITECT & LEAD DEVELOPER</p>
+        <h2 style="font-size:28px; font-weight:900; margin-bottom:20px;">Chaitanya Kumar Sahu</h2>
+        <div class="dev-links">
+            <a href="https://www.linkedin.com/in/chaitanya-kumar-sahu" target="_blank" class="dev-btn">LINKEDIN</a>
+            <a href="https://chaitanya-kumar-sahu-portifolio.netlify.app/" target="_blank" class="dev-btn">PORTFOLIO</a>
+        </div>
+    </div>
+    <p style="margin-top:40px; opacity:0.2; font-size:10px; letter-spacing:3px;">© 2022 V2 VASAVI ELECTRICALS</p>
+</footer>
 
 <script>
     const products = [
-        { id: 1, cat: 'MCB', name: '1 Pole / 2 Pole MCB', price: 450, img: 'mcb.jpg' },
-        { id: 2, cat: 'Switch', name: 'Modular Switches', price: 85, img: 'socket.jpg' },
-        { id: 3, cat: 'Fittings', name: 'PVC Conduit Pipes', price: 120, img: 'pipe.jpg' },
-        { id: 4, cat: 'Fittings', name: 'Junction Boxes', price: 45, img: 'junction.jpg' },
-        { id: 5, cat: 'Wire', name: 'Electrical Wires (Bundle)', price: 1250, img: 'wire.jpg' },
-        { id: 6, cat: 'MCB', name: 'Distribution Box (DB)', price: 1800, img: 'db.jpg' },
-        { id: 7, cat: 'Switch', name: 'Fancy Switches', price: 210, img: 'fancyswitch.jpg' },
-        { id: 8, cat: 'Wire', name: 'A/C Cords & Wires', price: 420, img: 'accords.jpg' }
+        { id: 1, cat: 'MCB', name: 'Precision MCB', price: 450, img: 'mcb.jpg' },
+        { id: 2, cat: 'Switch', name: 'Modular Socket', price: 85, img: 'socket.jpg' },
+        { id: 3, cat: 'Fittings', name: 'PVC Conduit Pipe', price: 120, img: 'pipe.jpg' },
+        { id: 4, cat: 'Fittings', name: 'Junction Box', price: 45, img: 'junction.jpg' },
+        { id: 5, cat: 'Switch', name: 'Electrical Wire', price: 1250, img: 'wire.jpg' }
     ];
     let cart = {};
 
-    function initApp() { 
-        renderGrid(); 
-        initBg();
+    function initApp() {
+        renderGrid(products);
+        initParticles();
         setTimeout(() => { document.getElementById('loader').style.opacity = '0'; setTimeout(() => document.getElementById('loader').style.display = 'none', 1000); }, 2000);
     }
 
-    function renderGrid() {
-        document.getElementById('grid').innerHTML = products.map(p => `
-            <div class="card visible" data-category="${p.cat}" data-name="${p.name.toLowerCase()}">
+    function renderGrid(data) {
+        document.getElementById('grid').innerHTML = data.map(p => `
+            <div class="card">
                 <img src="${p.img}" onerror="this.src='https://via.placeholder.com/300x200?text=V2+Item'">
-                <h3 style="font-size:16px; margin-bottom:10px;">${p.name}</h3>
-                <span class="price">₹${p.price}</span>
+                <h3>${p.name}</h3>
+                <p style="color:var(--primary); font-weight:800; margin-bottom:15px;">₹${p.price}</p>
                 <div class="qty-controls">
-                    <button class="qty-btn" onclick="qty(${p.id},-1)">-</button>
-                    <span id="qty-${p.id}" style="font-weight:bold; width:20px;">1</span>
-                    <button class="qty-btn" onclick="qty(${p.id},1)">+</button>
+                    <button class="qty-btn" onclick="updateQty(${p.id},-1)">-</button>
+                    <span id="qty-${p.id}">1</span>
+                    <button class="qty-btn" onclick="updateQty(${p.id},1)">+</button>
                 </div>
-                <button class="add-btn" onclick="add(${p.id})">ADD TO CART</button>
+                <button class="add-btn" onclick="addToCart(${p.id})">ADD TO CART</button>
             </div>
         `).join('');
     }
 
-    // 🔍 Category Filtering Logic
-    function filterCategory(category, element) {
-        // Update active chip
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        element.classList.add('active');
-
-        // Show/Hide cards based on category
-        const cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            if (category === 'all' || card.dataset.category === category) {
-                card.classList.add('visible');
-            } else {
-                card.classList.remove('visible');
-            }
-        });
+    function updateQty(id, d) { 
+        let e=document.getElementById('qty-'+id); 
+        let v=parseInt(e.innerText)+d; 
+        if(v >= 1) e.innerText = v; 
     }
 
-    // 🔍 Live Search Logic
-    function searchProducts() {
-        let val = document.getElementById('search').value.toLowerCase();
-        let cards = document.querySelectorAll('.card');
-        cards.forEach(card => {
-            let name = card.dataset.name;
-            // Also reset active chip when searching to show all results from category
-            document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-            document.querySelector('.chip[onclick*="all"]').classList.add('active');
-
-            if(name.includes(val)) card.classList.add('visible');
-            else card.classList.remove('visible');
-        });
-    }
-
-    function qty(id, d) { let e=document.getElementById('qty-'+id); let v=parseInt(e.innerText)+d; if(v>=1) e.innerText=v; }
-    function add(id) {
-        let qty=parseInt(document.getElementById('qty-'+id).innerText);
+    function addToCart(id) {
+        let q=parseInt(document.getElementById('qty-'+id).innerText);
         let p=products.find(x=>x.id===id);
-        if(cart[id]) cart[id].qty+=qty; else cart[id]={...p, qty:qty};
+        if(cart[id]) cart[id].qty += q;
+        else cart[id] = {...p, qty: q};
         renderCart(); toggleCart(true);
+    }
+
+    // New Function: Cart Update (+ / -)
+    function editCartQty(id, d) {
+        if(cart[id]) {
+            cart[id].qty += d;
+            if(cart[id].qty <= 0) delete cart[id];
+            renderCart();
+        }
+    }
+
+    function deleteFromCart(id) {
+        delete cart[id];
+        renderCart();
     }
 
     function renderCart() {
         let keys=Object.keys(cart), t=0;
-        document.getElementById('badge').innerText = keys.length;
-        document.getElementById('cartItems').innerHTML = keys.map(k => {
+        document.getElementById('cartCount').innerText = keys.length;
+        const container = document.getElementById('cartItems');
+        
+        if(keys.length === 0) {
+            container.innerHTML = '<p style="text-align:center; color: #444; margin-top: 50px;">Empty Cart</p>';
+            document.getElementById('total').innerText = "Total: ₹0";
+            return;
+        }
+
+        container.innerHTML = keys.map(k => {
             t += cart[k].price * cart[k].qty;
-            return `<div class="cart-item"><div><b>${cart[k].name}</b><br><span class="qty-label">₹${cart[k].price} × ${cart[k].qty} Pcs</span></div><div>₹${cart[k].price * cart[k].qty}</div></div>`;
+            return `
+                <div class="cart-item">
+                    <div>
+                        <div style="font-weight:bold; font-size:13px;">${cart[k].name}</div>
+                        <div class="cart-item-controls">
+                            <button class="cart-qty-btn" onclick="editCartQty(${k}, -1)">-</button>
+                            <span style="font-size:12px; font-weight:800; min-width:20px; text-align:center;">${cart[k].qty}</span>
+                            <button class="cart-qty-btn" onclick="editCartQty(${k}, 1)">+</button>
+                            <span style="font-size:10px; color:#555;">Pcs</span>
+                        </div>
+                    </div>
+                    <div style="display:flex; align-items:center;">
+                        <div style="font-weight:800; color:var(--primary); font-size:14px;">₹${cart[k].price * cart[k].qty}</div>
+                        <i class="fas fa-trash-alt del-btn" onclick="deleteFromCart(${k})"></i>
+                    </div>
+                </div>
+            `;
         }).join('');
         document.getElementById('total').innerText = "Total: ₹" + t;
     }
 
     function toggleCart(s) { document.getElementById('cartPanel').classList.toggle('active', s); }
+
+    function filterCat(cat, el) {
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        renderGrid(cat === 'all' ? products : products.filter(p => p.cat === cat));
+    }
+
+    function searchProducts() {
+        let val = document.getElementById('search').value.toLowerCase();
+        renderGrid(products.filter(p => p.name.toLowerCase().includes(val)));
+    }
+
     function checkout() {
-        let items=Object.keys(cart); if(!items.length) return alert("Empty!");
-        let m = "*Order from V2 Vasavi*:\n" + items.map(k=>`- ${cart[k].name} (Qty: ${cart[k].qty})`).join("\n");
+        let items=Object.keys(cart); if(!items.length) return;
+        let m = "*Order from V2 Vasavi website*:\n" + items.map(k=>`- ${cart[k].name} [${cart[k].qty} Pcs]`).join("\n");
         window.open("https://wa.me/919441944447?text=" + encodeURIComponent(m));
     }
 
-    function initBg(){ 
-        let c=document.getElementById('bg-canvas'),x=c.getContext('2d'); 
-        c.width=window.innerWidth; c.height=window.innerHeight; 
-        let d=[]; for(let i=0;i<70;i++)d.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:Math.random()-0.5,vy:Math.random()-0.5}); 
-        function animate(){ 
-            x.clearRect(0,0,c.width,c.height); x.fillStyle="#ffcc00"; 
-            d.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>c.width)p.vx*=-1; if(p.y<0||p.y>c.height)p.vy*=-1; x.beginPath(); x.arc(p.x,p.y,1.2,0,Math.PI*2); x.fill(); }); 
-            requestAnimationFrame(animate); 
-        } animate(); 
+    function initParticles() {
+        const c=document.getElementById('bg-canvas'), x=c.getContext('2d');
+        c.width=window.innerWidth; c.height=window.innerHeight;
+        let p=[]; for(let i=0;i<70;i++) p.push({x:Math.random()*c.width, y:Math.random()*c.height, vx:Math.random()-0.5, vy:Math.random()-0.5});
+        function draw() {
+            x.clearRect(0,0,c.width,c.height); x.fillStyle="#ffcc00";
+            p.forEach((a, i) => {
+                a.x+=a.vx; a.y+=a.vy; if(a.x<0||a.x>c.width) a.vx*=-1; if(a.y<0||a.y>c.height) a.vy*=-1;
+                x.beginPath(); x.arc(a.x, a.y, 1, 0, 7); x.fill();
+                for(let j=i+1; j<p.length; j++) {
+                    let d = Math.hypot(a.x-p[j].x, a.y-p[j].y);
+                    if(d<150) { x.strokeStyle=`rgba(255,204,0,${1-d/150})`; x.lineWidth=0.5; x.beginPath(); x.moveTo(a.x,a.y); x.lineTo(p[j].x,p[j].y); x.stroke(); }
+                }
+            });
+            requestAnimationFrame(draw);
+        } draw();
     }
 </script>
 </body>
