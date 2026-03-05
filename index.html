@@ -6,30 +6,257 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet" href="style.css">
+<style>
+
+/* Background */
+
+body{
+
+margin:0;
+
+font-family:Arial;
+
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+
+color:white;
+
+}
+
+/* Glass Effect */
+
+.glass{
+
+background:rgba(255,255,255,0.1);
+
+backdrop-filter:blur(10px);
+
+border-radius:15px;
+
+padding:20px;
+
+box-shadow:0 0 20px rgba(0,0,0,0.4);
+
+}
+
+/* Header */
+
+header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:20px;
+
+}
+
+.logo{
+
+width:120px;
+
+}
+
+/* Search */
+
+.search{
+
+padding:10px;
+
+border-radius:5px;
+
+border:none;
+
+width:200px;
+
+}
+
+/* Hero */
+
+.hero{
+
+text-align:center;
+
+padding:60px;
+
+}
+
+.hero h1{
+
+font-size:45px;
+
+}
+
+/* Products */
+
+.products{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+gap:20px;
+
+padding:30px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,0.1);
+
+border-radius:15px;
+
+padding:20px;
+
+text-align:center;
+
+transition:0.3s;
+
+}
+
+.card:hover{
+
+transform:scale(1.05);
+
+}
+
+/* Buttons */
+
+button{
+
+background:#ff9900;
+
+border:none;
+
+padding:10px 15px;
+
+border-radius:5px;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+/* Cart */
+
+#cart{
+
+position:fixed;
+
+top:20px;
+
+right:20px;
+
+background:black;
+
+padding:10px;
+
+border-radius:10px;
+
+}
+
+/* WhatsApp */
+
+.whatsapp{
+
+position:fixed;
+
+bottom:20px;
+
+right:20px;
+
+background:green;
+
+color:white;
+
+padding:15px;
+
+border-radius:50%;
+
+font-size:22px;
+
+text-decoration:none;
+
+}
+
+/* Order Form */
+
+form input, textarea{
+
+width:100%;
+
+padding:10px;
+
+margin:5px;
+
+border-radius:5px;
+
+border:none;
+
+}
+
+/* Reviews */
+
+.review{
+
+background:rgba(255,255,255,0.1);
+
+padding:15px;
+
+border-radius:10px;
+
+margin:10px;
+
+}
+
+/* Light Animation */
+
+.loader{
+
+width:60px;
+
+height:60px;
+
+border-radius:50%;
+
+background:yellow;
+
+margin:auto;
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+0%{opacity:1;}
+
+50%{opacity:0.2;}
+
+100%{opacity:1;}
+
+}
+
+</style>
 
 </head>
 
 <body>
 
-<header class="header">
+<div class="loader"></div>
+
+<header class="glass">
 
 <img src="logo.jpg" class="logo">
 
-<input class="search" placeholder="Search electrical products...">
+<input type="text" class="search" placeholder="Search products" onkeyup="searchProducts()">
 
-<a class="contact-btn" href="#contact">Contact</a>
+<div id="cart">Cart: <span id="count">0</span></div>
 
 </header>
-
-<nav class="nav">
-
-<a href="index.html">Home</a>
-<a href="products.html">Products</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-
-</nav>
 
 <section class="hero">
 
@@ -37,117 +264,148 @@
 
 <p>Wholesale & Retail Electrical Supplier</p>
 
-<a class="shop-btn" href="products.html">View Products</a>
-
 </section>
 
-<section class="categories">
+<section class="products" id="productList">
 
-<h2>Our Electrical Products</h2>
+<div class="card">
 
-<div class="category-grid">
+<h3>LED Bulb</h3>
 
-<div class="category">
+<p>Energy efficient lighting</p>
 
-<img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0">
-
-<h3>LED Bulbs</h3>
-
-<p>Energy efficient lighting solutions</p>
+<button onclick="addCart()">Add to Cart</button>
 
 </div>
 
-<div class="category">
-
-<img src="https://images.unsplash.com/photo-1605032653327-8f7c2e6c6f0d">
+<div class="card">
 
 <h3>Serial Lights</h3>
 
-<p>Festival decorative lighting</p>
+<p>Decorative festival lights</p>
+
+<button onclick="addCart()">Add to Cart</button>
 
 </div>
 
-<div class="category">
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1616627561950-9f746e330187">
+<h3>Street Light</h3>
 
-<h3>Street Lights</h3>
+<p>Outdoor lighting</p>
 
-<p>High brightness outdoor lighting</p>
-
-</div>
-
-<div class="category">
-
-<img src="https://images.unsplash.com/photo-1581093458791-9f3c3900d08d">
-
-<h3>Electric Pipes</h3>
-
-<p>Strong electrical wiring pipes</p>
+<button onclick="addCart()">Add to Cart</button>
 
 </div>
 
-<div class="category">
+<div class="card">
 
-<img src="https://images.unsplash.com/photo-1581093588401-16c2a6e0e2d2">
+<h3>Electric Pipe</h3>
 
-<h3>Nails & Hardware</h3>
+<p>Electrical wiring pipes</p>
 
-<p>Durable hardware materials</p>
+<button onclick="addCart()">Add to Cart</button>
 
 </div>
+
+<div class="card">
+
+<h3>Nails</h3>
+
+<p>Hardware nails</p>
+
+<button onclick="addCart()">Add to Cart</button>
 
 </div>
 
 </section>
 
-<section id="about" class="about">
+<section class="glass" style="margin:20px">
 
-<h2>About V2 Vasavi</h2>
+<h2>Place Order</h2>
 
-<p>
+<form>
 
-V2 Vasavi Electricals is a trusted supplier of electrical products in
-Visakhapatnam. We supply high quality lighting, electrical pipes,
-hardware materials and decorative lights for wholesale and retail.
+<input placeholder="Your Name">
 
-</p>
+<input placeholder="Phone Number">
+
+<textarea placeholder="Product Details"></textarea>
+
+<button>Submit Order</button>
+
+</form>
 
 </section>
 
-<section id="contact" class="contact">
+<section class="glass" style="margin:20px">
 
-<h2>Contact Us</h2>
+<h2>Customer Reviews</h2>
 
-<p>📧 Email : sridurgaent1969@gmail.com</p>
+<div class="review">⭐⭐⭐⭐⭐ Excellent electrical products</div>
 
-<p>📞 Phone : 9441944447 | 9247474242</p>
+<div class="review">⭐⭐⭐⭐ Good wholesale price</div>
 
-<p>
+</section>
 
-📍 Address :
+<section class="glass" style="margin:20px">
 
-#49-18-3, Lalithanagar  
-Opp. Laxmi Towers  
-Visakhapatnam - 16
+<h2>Location</h2>
 
-</p>
+<iframe
+
+width="100%"
+
+height="300"
+
+src="https://maps.google.com/maps?q=visakhapatnam&t=&z=13&ie=UTF8&iwloc=&output=embed">
+
+</iframe>
+
+</section>
 
 <a class="whatsapp"
 
-href="https://wa.me/919441944447?text=Hello%20I%20want%20to%20order%20electrical%20products">
+href="https://wa.me/919441944447?text=Hello%20I%20want%20to%20order%20products">
 
-Order on WhatsApp
+💬
 
 </a>
 
-</section>
+<script>
 
-<footer>
+/* Cart */
 
-<p>© 2026 V2 Vasavi Electricals | Visakhapatnam</p>
+let count=0
 
-</footer>
+function addCart(){
+
+count++
+
+document.getElementById("count").innerText=count
+
+}
+
+/* Search */
+
+function searchProducts(){
+
+let input=document.querySelector(".search").value.toLowerCase()
+
+let cards=document.querySelectorAll(".card")
+
+cards.forEach(card=>{
+
+let text=card.innerText.toLowerCase()
+
+card.style.display=text.includes(input)?"block":"none"
+
+})
+
+}
+
+</script>
 
 </body>
+
 </html>
