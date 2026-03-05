@@ -5,31 +5,79 @@ background:#f4f4f4;
 }
 
 header{
-background:#003366;
+background:#111;
 color:white;
-padding:20px;
 text-align:center;
+padding:20px;
+}
+
+.logo{
+width:200px;
+margin-bottom:10px;
 }
 
 nav{
-background:#ffcc00;
-padding:10px;
+background:#ff0000;
 text-align:center;
+padding:10px;
 }
 
 nav a{
-margin:10px;
+color:white;
+margin:15px;
 text-decoration:none;
+font-weight:bold;
+font-size:18px;
+}
+
+nav a:hover{
+color:yellow;
+}
+
+.home{
+padding:40px;
+text-align:center;
+}
+
+.products{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+padding:30px;
+}
+
+.card{
+background:white;
+padding:20px;
+margin:15px;
+width:220px;
+box-shadow:0 0 10px gray;
+border-radius:8px;
+text-align:center;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+#contact{
+text-align:center;
+padding:40px;
+background:#eee;
+}
+
+.whatsapp{
+background:green;
+color:white;
+padding:12px 20px;
+text-decoration:none;
+border-radius:5px;
 font-weight:bold;
 }
 
-section{
-padding:20px;
-}
-
 footer{
-background:#003366;
+background:#111;
 color:white;
 text-align:center;
-padding:10px;
+padding:15px;
 }
